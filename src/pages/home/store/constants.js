@@ -1,0 +1,1 @@
+export const ARTICLE_LIST = 'home/ARTICLE_LIST';
