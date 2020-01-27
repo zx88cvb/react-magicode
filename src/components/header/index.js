@@ -1,10 +1,28 @@
 import React from 'react';
+import {
+  HeaderStyle,
+  Navbar,
+  DivContainer,
+  ALogo,
+  ImgLogo,
+  DivCollapse,
+  UlMainMenu
+} from './style';
 
 function Header(props) {
   return (
-    <div>
-      Header page
-    </div>
+    <HeaderStyle>
+      <Navbar>
+        <DivContainer>
+          <ALogo>
+            <ImgLogo></ImgLogo>
+          </ALogo>
+          <DivCollapse>
+            <UlMainMenu></UlMainMenu>
+          </DivCollapse>
+        </DivContainer>
+      </Navbar>
+    </HeaderStyle>
   );
 }
 

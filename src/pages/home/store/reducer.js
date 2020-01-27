@@ -1,15 +1,15 @@
 import * as actionTypes from './constants';
-import { fromJS } from 'immutable';
+import produce from 'immer';
 
-const defaultState = fromJS({
+const defaultState = {
   articleList: []
-});
+};
 
-export default (state = defaultState, action) => {
+export default produce((draft = defaultState, action) => {
   switch(action.type) {
     case actionTypes.ARTICLE_LIST:
-      return state.set('articleList', action.data);
+      return draft.articleList = action.data;
     default:
-      return state;
+      return draft;
   }
-}
+})

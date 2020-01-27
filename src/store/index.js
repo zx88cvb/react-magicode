@@ -1,4 +1,4 @@
-import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
 
@@ -9,12 +9,12 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middleware = [sagaMiddleware];
 
-let allReducers = {
-  // router: routerReducer,
-  ...reducer
-};
+// let allReducers = {
+//   // router: routerReducer,
+//   reducer
+// };
 
-const store = createStore(combineReducers(allReducers), composeEnhancers(
+const store = createStore(reducer, composeEnhancers(
   applyMiddleware(...middleware)
 ));
 

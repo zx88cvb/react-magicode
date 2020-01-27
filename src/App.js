@@ -12,7 +12,7 @@ import Header from './components/header';
 function App() {
   return (
     <Provider store={store}>
-      <GlobalStyle></GlobalStyle>
+      <GlobalStyle />
       <BrowserRouter>
         <Header/>
         {/* 渲染匹配路径的路由组件 */}
