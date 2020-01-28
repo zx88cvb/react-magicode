@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux';
 import { GlobalStyle } from './style';
+import { CommonStyle } from './assets/style/global-style';
 
 import Header from './components/header';
 
@@ -13,6 +14,7 @@ function App() {
   return (
     <Provider store={store}>
       <GlobalStyle />
+      <CommonStyle />
       <BrowserRouter>
         <Header/>
         {/* 渲染匹配路径的路由组件 */}
