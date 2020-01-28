@@ -28,7 +28,8 @@ export const CommonStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
   }
-
+  
+  /* iconfont */
   .icon {
     width: 1em;
     height: 1em;
@@ -36,6 +37,39 @@ export const CommonStyle = createGlobalStyle`
     fill: currentColor;
     overflow: hidden;
   }
+
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+  
 
   .order-1 {
     -ms-flex-order: 1;
@@ -52,6 +86,15 @@ export const CommonStyle = createGlobalStyle`
     order: 3;
 }
 `
+
+export const MainElement = styled.main`
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  @media (min-width: 768px) {
+    padding-bottom: 3rem;
+    padding-top: 1.5rem;
+  }
+`;
 
 export const AElement = styled.a`
   text-decoration: none;
