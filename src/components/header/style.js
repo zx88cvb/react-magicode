@@ -33,28 +33,6 @@ export const DivContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-
-  @media (min-width: 1200px) {
-    max-width: 1140px;
-  }
-
-  @media (min-width: 992px) {
-    max-width: 960px;
-  }
-
-  @media (min-width: 768px) {
-    max-width: 720px;
-  }
-
-  @media (min-width: 576px) {
-    max-width: 540px;
-  }
-
   @media (max-width: 992px) {
     padding-right: 0;
     padding-left: 0;
@@ -71,6 +49,11 @@ export const ALogo = styled.a`
   line-height: inherit;
   white-space: nowrap;
 
+  @media (max-width: 767.98px) {
+    margin: 0;
+    text-align: center;
+  }
+
   @media (min-width: 992px){
     &[style] {
       -ms-flex-order: 1 !important;
@@ -80,11 +63,6 @@ export const ALogo = styled.a`
       -ms-flex-order: 1;
       order: 1;
     }
-  }
-
-  @media (max-width: 767.98px) {
-    margin: 0;
-    text-align: center;
   }
 `;
 

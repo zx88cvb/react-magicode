@@ -46,15 +46,9 @@ export const CommonStyle = createGlobalStyle`
     margin-left: auto;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 576px) {
     .container {
-      max-width: 1140px;
-    }
-  }
-
-  @media (min-width: 992px) {
-    .container {
-      max-width: 960px;
+      max-width: 540px;
     }
   }
 
@@ -64,10 +58,25 @@ export const CommonStyle = createGlobalStyle`
     }
   }
 
-  @media (min-width: 576px) {
+  @media (min-width: 992px) {
     .container {
-      max-width: 540px;
+      max-width: 960px;
     }
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+  .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
   }
   
 
@@ -84,7 +93,22 @@ export const CommonStyle = createGlobalStyle`
   .order-3 {
     -ms-flex-order: 3;
     order: 3;
-}
+  }
+
+  .p-3 {
+    padding: 1rem;
+  }
+  @media (min-width: 992px) {
+    .p-lg-5 {
+      padding: 3rem;
+    }
+  }
+
+  .flex-fill {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
+
 `
 
 export const MainElement = styled.main`

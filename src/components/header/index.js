@@ -24,7 +24,7 @@ function Header(props) {
   return (
     <HeaderStyle>
       <Navbar>
-        <DivContainer>
+        <DivContainer className="container">
           <ALogo className="order-2">
             <ImgLogo logo={logo}></ImgLogo>
           </ALogo>
