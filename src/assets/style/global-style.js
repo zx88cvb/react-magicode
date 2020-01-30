@@ -2,6 +2,9 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 export default {
   "theme-color": "#fdfbfb",
+  "theme-color-dark": "#222831",
+  "theme-color-primary": "#448EF6",
+  "theme-color-primary-dark": "#007bff",
   "theme-color-shadow": "rgba(212, 68, 57, .5)",
   "font-color-light": "#222831",
   "font-color-light-hover": "#007bff",
@@ -55,6 +58,13 @@ export const CommonStyle = createGlobalStyle`
   @media (min-width: 768px) {
     .container {
       max-width: 720px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding-right: 0.625rem;
+      padding-left: 0.625rem;
     }
   }
 

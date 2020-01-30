@@ -13,11 +13,24 @@ import {
   AMedia,
   DivMedia,
   DivListContent,
-  DivPaper
+  DivGrid,
+  DivPaper,
+  DivListBody,
+  DivListFooter,
+  DivH2X,
+  DivListDesc,
+  AH2X,
+  PTextLight,
+  DivFooterText,
+  AFooterCategory
 } from './style';
 
 function Swiper(props) {
   const { settings } = props;
+
+  const theme = {
+    dark: true
+  }
 
   // material-ui
   const useStyles = makeStyles(theme => ({
@@ -28,6 +41,8 @@ function Swiper(props) {
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
+      square: true,
+      elevation: 0
     },
   }));
   return (
@@ -37,35 +52,79 @@ function Swiper(props) {
         <h3>1222</h3>
       </DivGutters> */}
       <div className={useStyles.root}>
-        <Grid container spacing={3}>
+        <Grid container spacing={0} style={{borderRadius: '.25rem'}}>
           <Grid item xs={12} md={8}>
             <DivPaper className={useStyles.paper}>
               <DivMedia>
-                <AMedia>123</AMedia>
+                <AMedia />
               </DivMedia>
             </DivPaper>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <DivGrid item xs={12} md={4} theme2={theme}>
             <DivPaper className={useStyles.paper}>
-              <DivListContent className="flex-fill p-3 p-lg-5"></DivListContent>
+              <DivListContent className="flex-fill p-3 p-lg-5">
+                <DivListBody>
+                  <DivH2X>
+                    <AH2X>5 年估值 80 亿美金，寻找中国版 Peloton | 36氪新风向</AH2X>
+                  </DivH2X>
+                  <DivListDesc>
+                    <PTextLight>
+                    编者按：本文来自微信公众号“IPO那点事”（ID：ipopress），作者 亚轩，数据支持 勾股大数据；36氪经授权发布...
+                    </PTextLight>
+                  </DivListDesc>
+                </DivListBody>
+                <DivListFooter>
+                  <DivFooterText>
+                    <span>
+                      <AFooterCategory>生活</AFooterCategory>
+                    </span>
+                    <svg className="icon" aria-hidden="true">
+                      <use xlinkHref="#icon-line"></use>
+                    </svg>
+                    <time dateTime="2020-01-30 15:13:47">2020-01-30</time>
+                  </DivFooterText>
+                </DivListFooter>
+              </DivListContent>
             </DivPaper>
-          </Grid>
+          </DivGrid>
         </Grid>
       </div>
       <div className={useStyles.root}>
-        <Grid container spacing={3}>
+        <Grid container spacing={0} style={{borderRadius: '.25rem'}}>
           <Grid item xs={12} md={8}>
             <DivPaper className={useStyles.paper}>
               <DivMedia>
-                <AMedia></AMedia>
+                <AMedia />
               </DivMedia>
             </DivPaper>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <DivGrid item xs={12} md={4} theme2={theme}>
             <DivPaper className={useStyles.paper}>
-              <DivListContent className="flex-fill p-3 p-lg-5"></DivListContent>
+              <DivListContent className="flex-fill p-3 p-lg-5">
+                <DivListBody>
+                  <DivH2X>
+                    <AH2X>5 年估值 80 亿美金，寻找中国版 Peloton | 36氪新风向</AH2X>
+                  </DivH2X>
+                  <DivListDesc>
+                    <PTextLight>
+                    编者按：本文来自微信公众号“IPO那点事”（ID：ipopress），作者 亚轩，数据支持 勾股大数据；36氪经授权发布...
+                    </PTextLight>
+                  </DivListDesc>
+                </DivListBody>
+                <DivListFooter>
+                  <DivFooterText>
+                    <span>
+                      <AFooterCategory>生活</AFooterCategory>
+                    </span>
+                    <svg className="icon" aria-hidden="true">
+                      <use xlinkHref="#icon-line"></use>
+                    </svg>
+                    <time dateTime="2020-01-30 15:13:47">2020-01-30</time>
+                  </DivFooterText>
+                </DivListFooter>
+              </DivListContent>
             </DivPaper>
-          </Grid>
+          </DivGrid>
         </Grid>
       </div>
     </Slider>
