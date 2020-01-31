@@ -131,9 +131,10 @@ export const LiMenuItem = styled.li`
 `;
 
 export const LiItemNav = styled.li`
+  margin-left: .25rem;
   :not(:first-child) {
-    &&& {
-      margin-left: .5rem;
+    @media (min-width: 768px) {
+      margin-left: 1.5rem;
     }
   }
   a {
@@ -159,7 +160,11 @@ export const AItemNav = styled(AElement)`
     padding: 0;
     border-radius: 3px;
     white-space: normal;
-    font-size: .875rem;
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 767.98px) {
+    font-size: 1rem;
   }
 
   svg {

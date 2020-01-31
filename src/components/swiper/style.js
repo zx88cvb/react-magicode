@@ -12,8 +12,6 @@ export const DivPaper = styled(Paper)`
   padding-left: 0;
 
   &&& {
-    border-radius: 0;
-    box-shadow: none;
     background-color: transparent;
   }
 `;

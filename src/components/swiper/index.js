@@ -52,16 +52,16 @@ function Swiper(props) {
         <h3>1222</h3>
       </DivGutters> */}
       <div className={useStyles.root}>
-        <Grid container spacing={0} style={{borderRadius: '.25rem'}}>
+        <Grid container spacing={0}>
           <Grid item xs={12} md={8}>
-            <DivPaper className={useStyles.paper}>
+            <DivPaper className={useStyles.paper} elevation={0} square={true}>
               <DivMedia>
                 <AMedia />
               </DivMedia>
             </DivPaper>
           </Grid>
           <DivGrid item xs={12} md={4} theme2={theme}>
-            <DivPaper className={useStyles.paper}>
+            <DivPaper className={useStyles.paper} elevation={0} square={true}>
               <DivListContent className="flex-fill p-3 p-lg-5">
                 <DivListBody>
                   <DivH2X>
@@ -92,14 +92,14 @@ function Swiper(props) {
       <div className={useStyles.root}>
         <Grid container spacing={0} style={{borderRadius: '.25rem'}}>
           <Grid item xs={12} md={8}>
-            <DivPaper className={useStyles.paper}>
+            <DivPaper className={useStyles.paper} elevation={0} square={true}>
               <DivMedia>
                 <AMedia />
               </DivMedia>
             </DivPaper>
           </Grid>
           <DivGrid item xs={12} md={4} theme2={theme}>
-            <DivPaper className={useStyles.paper}>
+            <DivPaper className={useStyles.paper} elevation={0} square={true}>
               <DivListContent className="flex-fill p-3 p-lg-5">
                 <DivListBody>
                   <DivH2X>

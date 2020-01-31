@@ -9,8 +9,8 @@ export default {
   "font-color-light": "#222831",
   "font-color-light-hover": "#007bff",
   "font-color-light-shadow": "rgba(241, 241, 241, 0.6)",//略淡
-  "font-color-desc": "#2E3030",
-  "font-color-desc-v2": "#bba8a8", //略淡
+  "font-color-desc": "#393e46",
+  "font-color-desc-dark": "#B1B1C1", //略淡
   "font-size-ss": "10px",
   "font-size-s": "12px",
   "font-size-m": "14px",
@@ -21,7 +21,6 @@ export default {
   "background-color": "#f2f3f4",
   "background-color-shadow": "rgba(0, 0, 0, 0.3)",
   "highlight-background-color": "#fff",
-  "official-red": "#E82001"
 };
 
 export const CommonStyle = createGlobalStyle`
@@ -85,8 +84,15 @@ export const CommonStyle = createGlobalStyle`
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    /* margin-right: -15px;
+    margin-left: -15px; */
+  }
+
+  @media (max-width: 767.98px) {
+    .row {
+      margin-right: -0.625rem;
+      margin-left: -0.625rem;
+    }
   }
   
 
