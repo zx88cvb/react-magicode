@@ -1,14 +1,17 @@
 import React from 'react';
 import { renderRoutes } from "react-router-config";
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import Swiper from 'components/swiper';
+import List from 'components/list'
 import {
   DivBanner,
   Main,
   DivListNav,
-  ButtonNav
+  ButtonNav,
+  DivPaper
 } from './style';
 
 function Home(props) {
@@ -49,7 +52,7 @@ function Home(props) {
             <div className={useStyles.root}>
               <Grid container spacing={0}>
                 <Grid item lg={8}>
-                  <Paper className={useStyles.paper} elevation={0}>
+                  <DivPaper className={useStyles.paper} elevation={0}>
                     <DivListNav>
                       <ul>
                         <li>
@@ -60,11 +63,14 @@ function Home(props) {
                         </li>
                       </ul>
                     </DivListNav>
-                  </Paper>
+                    <List />
+                  </DivPaper>
                 </Grid>
-                <Grid item lg={4}>
-                  <Paper className={useStyles.paper} elevation={0} disableRipple={true}>lg=4</Paper>
-                </Grid>
+                <Hidden smDown>
+                  <Grid item lg={4}>
+                    <DivPaper className={useStyles.paper} elevation={0}>lg=4</DivPaper>
+                  </Grid>
+                </Hidden>
               </Grid>
             </div>
           {/* </div> */}

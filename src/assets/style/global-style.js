@@ -1,4 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 export default {
   "theme-color": "#fdfbfb",
@@ -29,6 +31,10 @@ export const CommonStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
+  }
+
+  body {
+    background-color: #fdfbfb;
   }
   
   /* iconfont */
@@ -139,4 +145,11 @@ export const MainElement = styled.main`
 export const AElement = styled.a`
   text-decoration: none;
   cursor: pointer;
+`;
+
+// material-ui
+export const PaperBase = styled(Paper)`
+  &&& {
+    background-color: transparent;
+  }
 `;

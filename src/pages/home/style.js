@@ -3,8 +3,11 @@ import Button from '@material-ui/core/Button';
 import style,
 {
   AElement,
-  MainElement
+  MainElement,
+  PaperBase
 } from '../../assets/style/global-style';
+
+export const DivPaper = PaperBase;
 
 export const DivBanner = styled.div`
   padding-top: 1rem;
