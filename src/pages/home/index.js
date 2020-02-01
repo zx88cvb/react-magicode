@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Swiper from 'components/swiper';
 import List from 'components/list'
+import Sidebar from 'components/sidebar'
 import {
   DivBanner,
   Main,
@@ -50,7 +51,7 @@ function Home(props) {
         <div className="container">
           {/* <div className="row"> */}
             <div className={useStyles.root}>
-              <Grid container spacing={0}>
+              <Grid container spacing={3}>
                 <Grid item lg={8}>
                   <DivPaper className={useStyles.paper} elevation={0}>
                     <DivListNav>
@@ -68,7 +69,9 @@ function Home(props) {
                 </Grid>
                 <Hidden smDown>
                   <Grid item lg={4}>
-                    <DivPaper className={useStyles.paper} elevation={0}>lg=4</DivPaper>
+                    <DivPaper className={useStyles.paper} elevation={0}>
+                      <Sidebar />
+                    </DivPaper>
                   </Grid>
                 </Hidden>
               </Grid>

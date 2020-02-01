@@ -147,6 +147,15 @@ export const AElement = styled.a`
   cursor: pointer;
 `;
 
+export const DivMedia = styled.div`
+  position: relative;
+  display: block;
+  align-items: flex-start;
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 0;
+`;
+
 // material-ui
 export const PaperBase = styled(Paper)`
   &&& {
