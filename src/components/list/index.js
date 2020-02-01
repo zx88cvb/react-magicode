@@ -15,7 +15,8 @@ import {
   DivItemCenter,
   DivInlineBlock,
   AUserName,
-  DivIB2
+  DivIB2,
+  DivTime
 } from './style';
 
 function List(props) {
@@ -34,7 +35,7 @@ function List(props) {
   return (
     <div>
       <DivListItem className={useStyles.root}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={4} md={4}>
             <DivPaper className={useStyles.paper} elevation={0}>
               <DivMedia>
@@ -66,6 +67,10 @@ function List(props) {
                   <DivInlineBlock>
                     <AUserName>新闻</AUserName>
                   </DivInlineBlock>
+                  <div className="flex-fill"></div>
+                  <DivTime>
+                    <time>2020-02-01 14:14:06</time>
+                  </DivTime>
                 </DivItemCenter>
               </DivListFooter>
             </DivPaper>

@@ -132,3 +132,9 @@ export const AUserName = styled(AElement)`
     color: ${style["font-color-light-hover"]};
   }
 `;
+
+export const DivTime = styled.div`
+  time {
+    margin: 0 .25rem;
+  }
+`;
