@@ -120,6 +120,10 @@ export const CommonStyle = createGlobalStyle`
   .p-3 {
     padding: 1rem;
   }
+
+  .p-4 {
+    padding: 1.5rem;
+  }
   @media (min-width: 992px) {
     .p-lg-5 {
       padding: 3rem;
@@ -155,6 +159,17 @@ export const DivMedia = styled.div`
   overflow: hidden;
   padding: 0;
 `;
+
+export const SpanOverlay = styled.span`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.66);
+  position: absolute;
+  opacity: .22;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease-in-out;
+`
 
 // material-ui
 export const PaperBase = styled(Paper)`

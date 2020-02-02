@@ -3,7 +3,8 @@ import style,
 {
   AElement,
   DivMedia,
-  PaperBase
+  PaperBase,
+  SpanOverlay
 } from '../../assets/style/global-style';
 // material-ui
 export const DivPaper = styled(PaperBase)`
@@ -44,6 +45,92 @@ export const DivCardItem = styled.div`
   color: #fff;
 `;
 
-export const DivMediaCard = styled.DivMedia`
+export const DivMediaCard = styled(DivMedia)`
   border-radius: 3px;
+
+  ::after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+`;
+
+export const AMediaContent = styled(AElement)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 0;
+  border-radius: inherit;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: rgba(120, 120, 120, 0.1);
+  background-image: url(https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2019/06/2019062004540484.jpg);
+`;
+
+export const SpanCardOverlay = SpanOverlay;
+
+export const DivMediaOverlay = styled.div`
+  position: absolute;
+  display: flex;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  padding: 1.5rem;
+  color: #fff;
+`;
+
+export const DivMediaFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  span {
+    display: block;
+    line-height: 1;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: #fff;
+  }
+
+  time {
+    display: block;
+    font-size: 0.75rem;
+  }
+`;
+
+export const DivListContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(6, 6, 8, 0), rgba(6, 6, 8, 0.7));
+`;
+
+export const DivListBody = styled.div`
+  flex: 1 1 auto;
+`;
+
+export const AListTitle = styled(AElement)`
+  overflow: hidden;
+  display: -webkit-box;
+  line-height: 1.42;
+  color: inherit;
+  font-size: 1.08rem;
+  background-color: transparent;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
+export const DivListFooter = styled.div`
+  margin-top: 1rem;
 `;
