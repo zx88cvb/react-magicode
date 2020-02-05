@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-export default {
+const BaseStyle = {
   "theme-color": "#fdfbfb",
   "theme-color-dark": "#222831",
   "theme-color-primary": "#448EF6",
@@ -24,6 +24,8 @@ export default {
   "background-color-shadow": "rgba(0, 0, 0, 0.3)",
   "highlight-background-color": "#fff",
 };
+
+export default BaseStyle;
 
 export const CommonStyle = createGlobalStyle`
   body, input, button, select, optgroup, option, textarea, blockquote, dd, dl, figure, form, pre, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -170,6 +172,47 @@ export const SpanOverlay = styled.span`
   left: 0;
   transition: opacity 0.3s ease-in-out;
 `
+
+export const DivCard = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-width: 0;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  min-width: 0;
+  word-wrap: break-word;
+  /* border: 1px solid rgba(0,0,0,.125); */
+  box-shadow: 0px 0px 20px -5px rgba(158, 158, 158, 0.2);
+  background: #fff;
+`;
+
+// 右侧Card头部
+export const DivCardHeader = styled.div`
+  margin-bottom: 0;
+  padding: 1.25rem 1.125rem 0;
+  border: 0;
+  background-color: transparent;
+  background-clip: padding-box;
+  line-height: 1;
+  :first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+  }
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+    top: 0;
+    color: ${BaseStyle["theme-color-primary"]};
+    transform: translate(0%, -50%);
+  }
+`;
+
+export const DivCardBody = styled.div`
+  padding: 1.125rem 1.125rem;
+  flex: 1 1 auto;
+`;
 
 // material-ui
 export const PaperBase = styled(Paper)`
