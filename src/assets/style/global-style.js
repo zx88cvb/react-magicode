@@ -162,6 +162,20 @@ export const DivMedia = styled.div`
   padding: 0;
 `;
 
+export const MediaContent = styled(AElement)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 0;
+  border-radius: inherit;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: rgba(120, 120, 120, 0.1);
+`;
+
 export const SpanOverlay = styled.span`
   width: 100%;
   height: 100%;
@@ -173,6 +187,7 @@ export const SpanOverlay = styled.span`
   transition: opacity 0.3s ease-in-out;
 `
 
+// 右侧Card头部
 export const DivCard = styled.div`
   position: relative;
   display: flex;
@@ -187,7 +202,7 @@ export const DivCard = styled.div`
   background: #fff;
 `;
 
-// 右侧Card头部
+
 export const DivCardHeader = styled.div`
   margin-bottom: 0;
   padding: 1.25rem 1.125rem 0;
@@ -213,6 +228,32 @@ export const DivCardBody = styled.div`
   padding: 1.125rem 1.125rem;
   flex: 1 1 auto;
 `;
+
+export const DivMyN2 = styled.div`
+  margin: -.5rem 0;
+`;
+
+export const DivPy2 = styled.div`
+  padding: .5rem 0; 
+`;
+
+export const DivListContent = styled.div`
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: center;
+`;
+
+export const DivListItem = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+`;
+
+// ------------------------------------------------
 
 // material-ui
 export const PaperBase = styled(Paper)`

@@ -2,7 +2,12 @@ import React from 'react';
 import {
   DivRecommend,
   DivRecommendedHeader,
-  DivRecommendedBody
+  DivRecommendedBody,
+  DivRecommendedMyN2,
+  DivRecommendedPy2,
+  DivRecommendedListItem,
+  DivRecommendedMedia,
+  ARecommendedMedia
 } from './style';
 
 function SidebarRecommend(props) {
@@ -10,11 +15,21 @@ function SidebarRecommend(props) {
     <DivRecommend>
       <DivRecommendedHeader>
         文章聚合
-        <svg className="icon" aria-hidden="true">
+        {/* <svg className="icon" aria-hidden="true">
           <use xlinkHref="#icon-line"></use>
-        </svg>
+        </svg> */}
       </DivRecommendedHeader>
-      <DivRecommendedBody></DivRecommendedBody>
+      <DivRecommendedBody>
+        <DivRecommendedMyN2>
+          <DivRecommendedPy2>
+            <DivRecommendedListItem>
+              <DivRecommendedMedia>
+                <ARecommendedMedia></ARecommendedMedia>
+              </DivRecommendedMedia>
+            </DivRecommendedListItem>
+          </DivRecommendedPy2>
+        </DivRecommendedMyN2>
+      </DivRecommendedBody>
     </DivRecommend>
   );
 }
