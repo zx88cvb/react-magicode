@@ -253,6 +253,13 @@ export const DivListItem = styled.div`
   word-wrap: break-word;
 `;
 
+export const DivListBody = styled.div`
+  flex: 1 1 auto;
+`;
+
+export const DivListFooter = styled.div`
+  margin-top: 0.25rem;
+`;
 // ------------------------------------------------
 
 // material-ui

@@ -11,7 +11,10 @@ import style,
   DivMyN2,
   DivPy2,
   DivListItem,
-  MediaContent
+  MediaContent,
+  DivListContent,
+  DivListBody,
+  DivListFooter
 } from 'assets/style/global-style';
 // material-ui
 export const DivPaper = styled(PaperBase)`
@@ -47,4 +50,42 @@ export const DivRecommendedMedia = styled(DivMedia)`
 
 export const ARecommendedMedia = styled(MediaContent)`
   background-image: url(https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2019/06/2019072007293673.jpg);
+`;
+
+export const SpanRecommendedOverlay = SpanOverlay;
+
+export const DivRecommendedListContent = styled(DivListContent)`
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: .75rem;
+  background: linear-gradient(to bottom, rgba(6, 6, 8, 0), rgba(6, 6, 8, 0.7));
+`;
+
+export const DivRecommendedListBody = styled(DivListBody)`
+  a {
+    text-decoration: none;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    font-size: 0.875rem;
+    line-height: 1.42;
+    display: block;
+    color: inherit;
+  }
+`;
+
+export const DivRecommendedListFooter = styled(DivListFooter)`
+  .text-muted {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    time {
+      display: inline-block;
+    }
+  }
 `;

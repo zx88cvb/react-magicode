@@ -7,7 +7,11 @@ import {
   DivRecommendedPy2,
   DivRecommendedListItem,
   DivRecommendedMedia,
-  ARecommendedMedia
+  ARecommendedMedia,
+  SpanRecommendedOverlay,
+  DivRecommendedListContent,
+  DivRecommendedListBody,
+  DivRecommendedListFooter
 } from './style';
 
 function SidebarRecommend(props) {
@@ -24,10 +28,23 @@ function SidebarRecommend(props) {
           <DivRecommendedPy2>
             <DivRecommendedListItem>
               <DivRecommendedMedia>
-                <ARecommendedMedia></ARecommendedMedia>
+                <ARecommendedMedia>
+                  <SpanRecommendedOverlay />
+                </ARecommendedMedia>
               </DivRecommendedMedia>
+              <DivRecommendedListContent>
+                <DivRecommendedListBody>
+                  <a href="#">在给《复联4》贡献完票房和泪水后，你终于可以去玩一玩迪士尼漫威园区了</a>
+                </DivRecommendedListBody>
+                <DivRecommendedListFooter>
+                  <div className="text-muted">
+                    <time>2020-03-01</time>
+                  </div>
+                </DivRecommendedListFooter>
+              </DivRecommendedListContent>
             </DivRecommendedListItem>
           </DivRecommendedPy2>
+          
         </DivRecommendedMyN2>
       </DivRecommendedBody>
     </DivRecommend>
