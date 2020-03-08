@@ -137,6 +137,34 @@ export const CommonStyle = createGlobalStyle`
     flex: 1 1 auto;
   }
 
+  /* 右侧Card头部 */
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-width: 0;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    min-width: 0;
+    word-wrap: break-word;
+    /* border: 1px solid rgba(0,0,0,.125); */
+    box-shadow: 0px 0px 20px -5px rgba(158, 158, 158, 0.2);
+    background: #fff;
+  }
+
+  .card-body {
+    padding: 1.125rem 1.125rem;
+    flex: 1 1 auto;
+  }
+
+  .py-2 {
+    padding: .5rem 0; 
+  }
+
+  .my-n2 {
+    margin: -.5rem 0;
+  }
+
 `
 
 export const MainElement = styled.main`
@@ -227,14 +255,6 @@ export const DivCardHeader = styled.div`
 export const DivCardBody = styled.div`
   padding: 1.125rem 1.125rem;
   flex: 1 1 auto;
-`;
-
-export const DivMyN2 = styled.div`
-  margin: -.5rem 0;
-`;
-
-export const DivPy2 = styled.div`
-  padding: .5rem 0; 
 `;
 
 export const DivListContent = styled.div`

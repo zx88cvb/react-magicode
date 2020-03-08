@@ -2,6 +2,7 @@ import React from 'react';
 
 import SidebarRandom from './random';
 import SidebarRecommended from './recommended';
+import SidebarTag from './tag';
 import {
   DivSidebar
 } from './style';
@@ -11,6 +12,7 @@ function Sidebar(props) {
     <DivSidebar>
       <SidebarRandom/>
       <SidebarRecommended/>
+      <SidebarTag />
     </DivSidebar>
   );
 }

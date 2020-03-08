@@ -5,11 +5,6 @@ import style,
   DivMedia,
   PaperBase,
   SpanOverlay,
-  DivCard,
-  DivCardHeader,
-  DivCardBody,
-  DivMyN2,
-  DivPy2,
   DivListItem,
   MediaContent,
   DivListContent,
@@ -23,15 +18,6 @@ export const DivPaper = styled(PaperBase)`
 `;
 
 // 随机文章
-export const DivRecommend = DivCard;
-
-export const DivRecommendedHeader = DivCardHeader;
-export const DivRecommendedBody = DivCardBody;
-
-export const DivRecommendedMyN2 = DivMyN2;
-
-export const DivRecommendedPy2 = DivPy2;
-
 export const DivRecommendedListItem = styled(DivListItem)`
   border-radius: 3px;
   overflow: hidden;

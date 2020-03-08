@@ -1,10 +1,6 @@
 import React from 'react';
 import {
-  DivRecommend,
   DivRecommendedHeader,
-  DivRecommendedBody,
-  DivRecommendedMyN2,
-  DivRecommendedPy2,
   DivRecommendedListItem,
   DivRecommendedMedia,
   ARecommendedMedia,
@@ -14,18 +10,24 @@ import {
   DivRecommendedListFooter
 } from './style';
 
+import {
+  DivCard,
+  DivCardHeader
+}
+from 'assets/style/global-style';
+
 function SidebarRecommend(props) {
   return(
-    <DivRecommend>
-      <DivRecommendedHeader>
+    <DivCard>
+      <DivCardHeader>
         文章聚合
         {/* <svg className="icon" aria-hidden="true">
           <use xlinkHref="#icon-line"></use>
         </svg> */}
-      </DivRecommendedHeader>
-      <DivRecommendedBody>
-        <DivRecommendedMyN2>
-          <DivRecommendedPy2>
+      </DivCardHeader>
+      <div className="card-body">
+        <div className="my-n2">
+          <div className="py-2">
             <DivRecommendedListItem>
               <DivRecommendedMedia>
                 <ARecommendedMedia>
@@ -43,11 +45,10 @@ function SidebarRecommend(props) {
                 </DivRecommendedListFooter>
               </DivRecommendedListContent>
             </DivRecommendedListItem>
-          </DivRecommendedPy2>
-          
-        </DivRecommendedMyN2>
-      </DivRecommendedBody>
-    </DivRecommend>
+          </div>
+        </div>
+      </div>
+    </DivCard>
   );
 }
 
