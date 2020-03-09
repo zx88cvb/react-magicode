@@ -9,6 +9,7 @@ import { GlobalStyle } from './style';
 import { CommonStyle } from './assets/style/global-style';
 
 import Header from './components/header';
+import Footer from './components/footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Header/>
         {/* 渲染匹配路径的路由组件 */}
         {renderRoutes(routes)}
+        <Footer />
       </BrowserRouter>
     </Provider>
   );
