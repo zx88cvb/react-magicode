@@ -11,7 +11,8 @@ const SuspenseComponent = Component => props => {
 }
 
 // 组件
-const ArticleComponent = lazy(() => import("../pages/article/"));
+const ArticleComponent = lazy(() => import("pages/article/index"));
+const CategoryComponent = lazy(() => import("pages/category/index"));
 
 export default [
   {
@@ -20,6 +21,7 @@ export default [
       {
         path: "/",
         component: HomePage,
+        exact: true,
         routes: [
           // {
           //   path: "/",
@@ -27,10 +29,16 @@ export default [
           //   render: () => <Redirect to={"/recommend"} />
           // }
           {
-            path: "/article",
-            component: SuspenseComponent(ArticleComponent)
+            path: "/article/:id",
+            component: SuspenseComponent(ArticleComponent),
+            exact: true
           }
         ]
+      },
+      {
+        path: "/category/:id",
+        component: SuspenseComponent(CategoryComponent),
+        exact: true
       }
     ]
   }

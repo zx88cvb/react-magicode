@@ -12,7 +12,7 @@ function Footer(props) {
           <div className="flex-md-column">
             <div className="footer-copyright">
             Copyright © 2019 Angelive
-          · Powered By Vue · Theme By Angel
+          · Powered By React · Theme By Angel
             </div>
           </div>
         </div>

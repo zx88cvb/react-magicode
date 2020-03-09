@@ -79,7 +79,7 @@ function Home(props) {
           {/* </div> */}
         </div>
       </Main>
-      { renderRoutes(route.routes) }
+      {/* { renderRoutes(route.routes) } */}
     </React.Fragment>
   );
 }

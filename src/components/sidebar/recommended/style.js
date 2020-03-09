@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import style,
 {
-  AElement,
   DivMedia,
   PaperBase,
   SpanOverlay,
@@ -11,6 +10,12 @@ import style,
   DivListBody,
   DivListFooter
 } from 'assets/style/global-style';
+
+export {
+  DivCard,
+  DivCardHeader
+}
+from 'assets/style/global-style';
 // material-ui
 export const DivPaper = styled(PaperBase)`
   padding-right: 0;

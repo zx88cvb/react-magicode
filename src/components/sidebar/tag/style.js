@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import style from 'assets/style/global-style';
 
+export {
+  DivCard,
+  DivCardHeader
+}
+from 'assets/style/global-style';
+
 // material-ui
 export const DivTagCloud = styled.div`
   padding: 1.375rem 1.5rem 1.5rem;

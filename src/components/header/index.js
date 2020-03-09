@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
 import {
   HeaderStyle,
@@ -25,23 +26,23 @@ function Header(props) {
     <HeaderStyle>
       <Navbar>
         <DivContainer className="container">
-          <ALogo className="order-2">
+          <ALogo to="/" className="order-2">
             <ImgLogo logo={logo}></ImgLogo>
           </ALogo>
           <Hidden smDown>
             <DivCollapse className="order-2">
               <UlMainMenu>
                 <LiMenuItem>
-                  <AMenuItem>主页</AMenuItem>
+                  <Link to="/">主页</Link>
                 </LiMenuItem>
                 <LiMenuItem>
-                  <AMenuItem>科技</AMenuItem>
+                  <Link to="/category/1">科技</Link>
                 </LiMenuItem>
                 <LiMenuItem>
-                  <AMenuItem>主题</AMenuItem>
+                  <Link to="/category/1">主题</Link>
                 </LiMenuItem>
                 <LiMenuItem>
-                  <AMenuItem>友情链接</AMenuItem>
+                  <Link to="/category/1">友情链接</Link>
                 </LiMenuItem>
               </UlMainMenu>
               <UlItemOrder>

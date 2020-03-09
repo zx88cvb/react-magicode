@@ -1,13 +1,10 @@
 import React from 'react';
 
 import {
+  DivCard,
+  DivCardHeader,
   DivTagCloud
 } from './style';
-import {
-  DivCard,
-  DivCardHeader
-}
-from 'assets/style/global-style';
 
 function SidebarTag(props) {
   return (

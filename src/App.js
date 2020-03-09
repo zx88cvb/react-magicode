@@ -1,7 +1,7 @@
 import React from 'react';
 import store from './store';
 import { renderRoutes } from "react-router-config";
-import routes from "./routes/index.js";
+import routes from "./routes/index";
 import { BrowserRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux';

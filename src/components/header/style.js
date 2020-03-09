@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import style,
 {
   AElement
@@ -39,7 +40,7 @@ export const DivContainer = styled.div`
   }
 `;
 
-export const ALogo = styled.a`
+export const ALogo = styled(Link)`
   max-width: 200px;
   display: inline-block;
   padding-top: .3125rem;
@@ -126,7 +127,13 @@ export const LiMenuItem = styled.li`
   margin: 0 .5rem 0 0;
 
   a {
+    position: relative;
+    display: block;
+    font-size: .875rem;
+    padding: .5rem;
     color: ${style["font-color-light"]};
+    text-decoration: none;
+    cursor: pointer;
   }
 `;
 
@@ -142,12 +149,12 @@ export const LiItemNav = styled.li`
   }
 `;
 
-export const AMenuItem = styled(AElement)`
-  position: relative;
-  display: block;
-  font-size: .875rem;
-  padding: .5rem;
-`;
+// export const AMenuItem = styled(AElement)`
+//   position: relative;
+//   display: block;
+//   font-size: .875rem;
+//   padding: .5rem;
+// `;
 
 // 图标
 export const AItemNav = styled(AElement)`

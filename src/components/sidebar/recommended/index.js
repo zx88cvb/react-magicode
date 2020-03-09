@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  DivRecommendedHeader,
+  DivCard,
+  DivCardHeader,
   DivRecommendedListItem,
   DivRecommendedMedia,
   ARecommendedMedia,
@@ -9,12 +10,6 @@ import {
   DivRecommendedListBody,
   DivRecommendedListFooter
 } from './style';
-
-import {
-  DivCard,
-  DivCardHeader
-}
-from 'assets/style/global-style';
 
 function SidebarRecommend(props) {
   return(
