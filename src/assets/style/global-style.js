@@ -126,6 +126,13 @@ export const CommonStyle = createGlobalStyle`
   .p-4 {
     padding: 1.5rem;
   }
+
+  @media (min-width: 768px) {
+    .p-md-4 {
+      padding: 1.5rem!important;
+    }
+  }
+  
   @media (min-width: 992px) {
     .p-lg-5 {
       padding: 3rem;
@@ -163,6 +170,17 @@ export const CommonStyle = createGlobalStyle`
 
   .my-n2 {
     margin: -.5rem 0;
+  }
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.66);
+    position: absolute;
+    opacity: .22;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease-in-out;
   }
 
 `
