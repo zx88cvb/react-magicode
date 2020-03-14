@@ -28,16 +28,16 @@ export default [
           //   exact: true,
           //   render: () => <Redirect to={"/recommend"} />
           // }
-          {
-            path: "/article/:id",
-            component: SuspenseComponent(ArticleComponent),
-            exact: true
-          }
         ]
       },
       {
         path: "/category/:id",
         component: SuspenseComponent(CategoryComponent),
+        exact: true
+      },
+      {
+        path: "/article/:id",
+        component: SuspenseComponent(ArticleComponent),
         exact: true
       }
     ]
