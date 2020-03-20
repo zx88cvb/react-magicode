@@ -38,6 +38,11 @@ export const CommonStyle = createGlobalStyle`
   body {
     background-color: #fdfbfb;
   }
+
+  small {
+    font-size: 80%;
+    font-weight: 400;
+  }
   
   /* iconfont */
   .icon {

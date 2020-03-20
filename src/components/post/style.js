@@ -1,8 +1,18 @@
 import styled from 'styled-components';
-import style,
-{
-  AElement
-} from 'assets/style/global-style';
+import { Link } from 'react-router-dom';
+import style from 'assets/style/global-style';
+
+
+export const ATag = styled(Link)`
+  display: inline-block;
+
+  padding-right: .25rem;
+  text-decoration: none;
+  
+  color: #222831;
+  /* transition: all .3s ease; */
+  cursor: pointer;
+`;
 
 export const DivPostHeader = styled.div`
   position: relative;
@@ -27,6 +37,72 @@ export const DivPostHeader = styled.div`
 
     time {
       color: #9ca0ad;
+    }
+  }
+
+  .badge-primary {
+    display: block;
+
+    color: #fff;
+    background-color: #448EF6;
+
+    border-radius: 2px;
+    font-weight: 400;
+    padding: .25em .3em;
+
+    font-size: 75%;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .ml-auto {
+    margin-left: auto;
+    font-size: 0.875rem;
+
+    .mx-1 {
+      margin:0 .25rem;
+
+      svg {
+        margin:0 .25rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .border-theme {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    bottom: -1px;
+    width: 8%;
+    height: 2px;
+    z-index: 2;
+
+    background-color: ${style["theme-color-primary"]};
+  }
+`;
+
+export const DivPostContent = styled.div`
+  &&& {
+    img {
+      max-width: 100%;
+      height: auto;
+
+      vertical-align: middle;
+      border-style: none;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      line-height: 2;
+      word-wrap: break-word;
+
+      color: #393E46;
+      margin: 0;
+      white-space: normal;
+      word-break: break-all;
     }
   }
 `;
