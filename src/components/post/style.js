@@ -106,3 +106,37 @@ export const DivPostContent = styled.div`
     }
   }
 `;
+
+export const DivFooter = styled.div`
+  background-clip: padding-box;
+  background-color: transparent;
+  line-height: 1;
+  &&& {
+    padding-top: 0;
+    border: 0;
+  }
+
+  .post-share-section {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+      text-align: left!important;
+    }
+    
+    .mr {
+      cursor: pointer;
+      transition: all .3s ease;
+      @media (min-width: 768px){
+        margin-right: 1.5rem;
+      }
+
+      svg {
+        margin:0 .25rem;
+        font-size: 1rem;
+      }
+        
+    }
+  }
+`;

@@ -3,7 +3,8 @@ import React from 'react';
 import {
   DivPostHeader,
   ATag,
-  DivPostContent
+  DivPostContent,
+  DivFooter
 } from './style';
 
 function Post() {
@@ -57,6 +58,16 @@ function Post() {
           </div>
         </DivPostContent>
       </div>
+      <DivFooter className="card-footer">
+        <div className="post-share-section py-2">
+          <span className="mr">
+            <svg className="icon" aria-hidden="true">
+              <use xlinkHref="#icon-like"></use>
+            </svg>
+            <small>12</small>
+          </span>
+        </div>
+      </DivFooter>
     </div>
   );
 }

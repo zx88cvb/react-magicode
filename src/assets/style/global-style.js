@@ -169,6 +169,13 @@ export const CommonStyle = createGlobalStyle`
     flex: 1 1 auto;
   }
 
+  .card-footer {
+    padding: 1.25rem 1.25rem 1rem;
+    background-color: rgba(0,0,0,.03);
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
+  }
+
   .py-2 {
     padding: .5rem 0; 
   }

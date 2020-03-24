@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Sidebar from 'components/sidebar';
 import Post from 'components/post';
-import Message from 'components/message';
+import Comment from 'components/comment';
 
 import {
   Main,
@@ -46,7 +46,7 @@ function Article() {
             <Grid item lg={8}>
               <DivPaper className={useStyles.paper} elevation={0}>
                 <Post></Post>
-                <Message></Message>
+                <Comment></Comment>
               </DivPaper>
             </Grid>
             <Hidden smDown>
