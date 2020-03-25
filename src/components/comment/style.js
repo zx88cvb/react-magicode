@@ -18,7 +18,3 @@ export const DivTitle = styled.div`
     color: #9ca0ad;
   }
 `;
-
-export const DivRespond = styled.div`
-
-`;

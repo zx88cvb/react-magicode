@@ -1,9 +1,10 @@
 import React from 'react';
 
 import {
-  DivTitle,
-  DivRespond
+  DivTitle
 } from './style';
+
+import Respond from './respond/index'
 
 function Comment() {
   return (
@@ -17,13 +18,7 @@ function Comment() {
       </DivTitle>
       <div className="card">
         <div className="card-body">
-          <DivRespond>
-            <form>
-              <div className="comment-from-author">
-
-              </div>
-            </form>
-          </DivRespond>
+          <Respond></Respond>
         </div>
       </div>
     </div>
