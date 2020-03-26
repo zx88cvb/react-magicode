@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     width: '25ch'
   },
   button: {
-    margin: theme.spacing(1)
+    marginTop: theme.spacing(2)
   }
 }));
 
@@ -76,7 +76,8 @@ function Respond() {
                   variant="outlined"
                 />
               </div>
-              <div className="flex-fill">
+              <div className="d-flex flex-fill">
+                <div className="flex-fill"></div>
                 <ButtonComment
                   variant="contained"
                   color="primary"

@@ -67,6 +67,11 @@ export const DivRespond = styled.div`
           overflow: auto;
         }
       }
+
+      .d-flex {
+        display: flex;
+        align-items: center;
+      }
     }
   }
 `;
