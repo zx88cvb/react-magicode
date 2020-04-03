@@ -1,10 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
 import {
   DivRespond,
-  ButtonComment
+  ButtonComment,
+  PaperBase
 } from './style';
 
 const useStyles = makeStyles(theme => ({
@@ -14,11 +16,17 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between'
   },
   textField: {
-    width: '25ch'
+    // width: '25ch'
   },
   button: {
     marginTop: theme.spacing(2)
-  }
+  },
+  paper: {
+    padding: theme.spacing(2),
+    // textAlign: 'center',
+    // color: theme.palette.text.secondary,
+    boxShadow: 'none'
+  },
 }));
 
 function Respond() {
@@ -50,7 +58,46 @@ function Respond() {
             </div>
             <div>
               <div className={classes.flexRoot}>
-                <TextField
+                <Grid container>
+                  <Grid item xs={12} md={4}>
+                    <PaperBase className={classes.paper}>
+                      <TextField
+                        label="昵称"
+                        id="outlined-margin-dense"
+                        required
+                        className={classes.textField}
+                        helperText="取一个好听的昵称吧"
+                        margin="dense"
+                        variant="outlined"
+                      />
+                    </PaperBase>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <PaperBase className={classes.paper}>
+                      <TextField
+                        label="邮箱"
+                        id="outlined-margin-dense"
+                        className={classes.textField}
+                        helperText="邮箱将会完全保密"
+                        margin="dense"
+                        variant="outlined"
+                      />
+                    </PaperBase>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                    <PaperBase className={classes.paper}>
+                      <TextField
+                        label="网站地址"
+                        id="outlined-margin-dense"
+                        className={classes.textField}
+                        helperText="介绍一下您的个人网站"
+                        margin="dense"
+                        variant="outlined"
+                      />
+                    </PaperBase>
+                  </Grid>
+                </Grid>
+                {/* <TextField
                   label="昵称"
                   id="outlined-margin-dense"
                   required
@@ -74,7 +121,7 @@ function Respond() {
                   helperText="介绍一下您的个人网站"
                   margin="dense"
                   variant="outlined"
-                />
+                /> */}
               </div>
               <div className="d-flex flex-fill">
                 <div className="flex-fill"></div>

@@ -3,6 +3,8 @@ import style from 'assets/style/global-style';
 
 import Button from '@material-ui/core/Button';
 
+export {PaperBase} from 'assets/style/global-style';
+
 export const DivRespond = styled.div`
 
   form {
