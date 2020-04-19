@@ -5,10 +5,11 @@ const defaultState = {
   articleList: []
 };
 
-export default produce((draft = defaultState, action) => {
+export default produce((draft, action) => {
   switch(action.type) {
     case actionTypes.ARTICLE_LIST:
-      return draft.articleList = action.data;
+      console.log(action);
+      return draft = action.data;
     default:
       return draft;
   }

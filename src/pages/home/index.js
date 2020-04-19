@@ -1,5 +1,6 @@
-import React from 'react';
-import { renderRoutes } from "react-router-config";
+import React, { useRef, useState, useEffect } from 'react';
+import { connect } from 'react-redux'
+// import { renderRoutes } from "react-router-config";
 import { makeStyles } from '@material-ui/core/styles';
 // import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -15,8 +16,24 @@ import {
   DivPaper
 } from './style';
 
+import {
+  getArticlePageAction
+} from './store/actionCreators';
+
 function Home(props) {
-  const { route } = props;
+  const { articleList } = props;
+  const {
+    getArticlePageDispatch
+  } = props;
+
+  // 分页 当前页
+  const [pageNum, setPageNum] = useState(1);
+
+  // 每页个数
+  const [pageSize, setPageSize] = useState(10);
+
+  // 博客状态
+  const [blogStatus, setBlogStatus] = useState(1);
 
   // material-ui
   const useStyles = makeStyles(theme => ({
@@ -30,6 +47,7 @@ function Home(props) {
     },
   }));
 
+  // swiper
   const settings = {
     dots: true,
     infinite: true,
@@ -40,6 +58,15 @@ function Home(props) {
     autoplaySpeed: 3000,
     arrows: false
   };
+
+
+  // useEffect(() => {
+  //   getArticlePageDispatch({
+  //     pageNum,
+  //     pageSize,
+  //     blogStatus
+  //   });
+  // }, [pageNum,pageSize,blogStatus]);
   return (
     <React.Fragment>
       <DivBanner>
@@ -84,4 +111,16 @@ function Home(props) {
   );
 }
 
-export default React.memo(Home);
+const mapState = (state) => ({
+  state
+});
+
+const mapDispatch = dispatch => {
+  return {
+    getArticlePageDispatch(data) {
+      dispatch(getArticlePageAction(data));
+    }
+  }
+};
+// export default React.memo(Home);
+export default connect(mapState, mapDispatch)(React.memo(Home));
