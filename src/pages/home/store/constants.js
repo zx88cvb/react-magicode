@@ -1,1 +1,2 @@
 export const ARTICLE_LIST = 'home/ARTICLE_LIST';
+export const ARTICLE_LIST_SUCCESS = 'home/ARTICLE_LIST_SUCCESS';

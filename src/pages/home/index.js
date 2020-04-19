@@ -27,13 +27,13 @@ function Home(props) {
   } = props;
 
   // 分页 当前页
-  const [pageNum, setPageNum] = useState(1);
+  // const [pageNum, setPageNum] = useState(1);
 
   // 每页个数
-  const [pageSize, setPageSize] = useState(10);
+  // const [pageSize, setPageSize] = useState(10);
 
   // 博客状态
-  const [blogStatus, setBlogStatus] = useState(1);
+  // const [blogStatus, setBlogStatus] = useState(1);
 
   // material-ui
   const useStyles = makeStyles(theme => ({
@@ -60,13 +60,14 @@ function Home(props) {
   };
 
 
-  // useEffect(() => {
-  //   getArticlePageDispatch({
-  //     pageNum,
-  //     pageSize,
-  //     blogStatus
-  //   });
-  // }, [pageNum,pageSize,blogStatus]);
+  useEffect(() => {
+    getArticlePageDispatch({
+      pageNum: 1,
+      pageSize: 10,
+      blogStatus: 1
+    });
+    console.log(111);
+  }, [getArticlePageDispatch]);
   return (
     <React.Fragment>
       <DivBanner>

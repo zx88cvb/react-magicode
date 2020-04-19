@@ -1,18 +1,20 @@
-import {take, call, put, fork, takeEvery, all} from 'redux-saga/effects'
-import { ARTICLE_LIST } from './constants';
-import { getArticlePageAction } from './actionCreators';
+import {call, put, takeEvery} from 'redux-saga/effects'
+import * as constants from './constants';
+import { getArticlePageSaga } from './actionCreators';
 
-function* getArticleList(arr) {
+function* getArticleList() {
   try {
     // yield takeEvery(getArticlePageAction, getArticleList);
-    const action = arr;
     // yield put({
     //   type: "home/ARTICLE_LIST_SUCCESS",
     //   data: action
     // });
-    yield put(getArticlePageAction({
-      // type: "home/ARTICLE_LIST_SUCCESS",
-      data: action
+    yield put(getArticlePageSaga({
+      type: constants.ARTICLE_LIST_SUCCESS,
+      data: {
+        code: 0,
+        data: {}
+      }
     }));
     // yield put(action);
   }catch(e) {
@@ -20,13 +22,13 @@ function* getArticleList(arr) {
   }
 }
 
-function* watchGetList() {
-  yield takeEvery(ARTICLE_LIST, getArticleList);
+export default function* articleSaga() {
+  yield takeEvery(constants.ARTICLE_LIST, getArticleList);
 }
 
 // export const HomeSaga = [(watchGetList)];
-export default function* homeSaga() {
-  yield all([
-    fork(watchGetList),
-  ])
-};
+// export default function* homeSaga() {
+//   yield all([
+//     fork(watchGetList),
+//   ])
+// };

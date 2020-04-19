@@ -10,6 +10,9 @@ export default produce((draft, action) => {
     case actionTypes.ARTICLE_LIST:
       console.log(action);
       return draft = action.data;
+    case actionTypes.ARTICLE_LIST_SUCCESS:
+      console.log("success:" + action);
+      return {};
     default:
       return draft;
   }
