@@ -66,7 +66,6 @@ function Home(props) {
       pageSize: 10,
       blogStatus: 1
     });
-    console.log(111);
   }, [getArticlePageDispatch]);
   return (
     <React.Fragment>
