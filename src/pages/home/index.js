@@ -91,7 +91,7 @@ function Home(props) {
                         </li>
                       </ul>
                     </DivListNav>
-                    <List />
+                    <List list={articleList} />
                   </DivPaper>
                 </Grid>
                 <Hidden smDown>
@@ -112,7 +112,7 @@ function Home(props) {
 }
 
 const mapState = (state) => ({
-  state
+  articleList: state.home.articleList
 });
 
 const mapDispatch = dispatch => {

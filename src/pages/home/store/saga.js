@@ -8,7 +8,7 @@ import {
 
 function* getArticleList() {
   try {
-    const params = yield select(state => state.home);
+    const params = yield select(state => state.home.page);
 
     // const res = yield call(axios.get, "/api/blogapi/blog/article/recent",params);
     const res = yield getBlogArticlePage(params);
