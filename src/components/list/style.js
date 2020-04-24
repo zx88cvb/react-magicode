@@ -54,7 +54,7 @@ export const AMediaConent = styled(AElement)`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-color: rgba(120, 120, 120, 0.1);
-  background-image: url(https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2019/06/photo-1520358889634-04b1a67b3f0c.jpg);
+  background-image: url(${props => props.image});
 `;
 
 export const DivListContent = styled.div`
