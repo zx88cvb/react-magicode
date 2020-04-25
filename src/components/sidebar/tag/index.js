@@ -7,13 +7,21 @@ import {
 } from './style';
 
 function SidebarTag(props) {
+  const { tagList } = props;
+
   return (
     <DivCard>
       <DivCardHeader>
         标签
       </DivCardHeader>
       <DivTagCloud>
-        <a href="#">Apple</a>
+        {
+          tagList.map(item => (
+            <a href="#" key={item.id}>
+              {item.tagName}
+            </a>
+          ))
+        }
       </DivTagCloud>
     </DivCard>
   );

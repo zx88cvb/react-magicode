@@ -45,7 +45,7 @@ function List(props) {
             <Grid item xs={4} md={4}>
               <DivPaper className={useStyles.paper} elevation={0}>
                 <DivMedia>
-                  <AMediaConent image={React.$imgPath(item.thumbnail)}/>
+                  <AMediaConent title={item.title} image={React.$imgPath(item.thumbnail)}/>
                 </DivMedia>
               </DivPaper>
             </Grid>

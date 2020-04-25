@@ -40,7 +40,7 @@ export const DivRecommendedMedia = styled(DivMedia)`
 `;
 
 export const ARecommendedMedia = styled(MediaContent)`
-  background-image: url(https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2019/06/2019072007293673.jpg);
+  background-image: url(${props => props.image});
 `;
 
 export const SpanRecommendedOverlay = SpanOverlay;
