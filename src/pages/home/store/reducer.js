@@ -3,7 +3,9 @@ import produce from 'immer';
 
 const defaultState = {
   page: null,
-  articleList: []
+  articleList: [],
+  swiperList: [],
+  categoryList: []
 };
 
 export default produce((draft = defaultState, action) => {
@@ -13,6 +15,12 @@ export default produce((draft = defaultState, action) => {
       return draft;
     case actionTypes.ARTICLE_LIST_SUCCESS:
       draft.articleList = action.data.data.records;
+      return draft;
+    case actionTypes.SWIPER_LIST:
+      return draft;
+    case actionTypes.SWIPER_LIST_SUCCESS:
+      draft.swiperList = action.data.data.swiperList;
+      draft.categoryList = action.data.data.listCategory;
       return draft;
     default:
       return draft;

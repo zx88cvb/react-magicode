@@ -17,13 +17,18 @@ import {
 } from './style';
 
 import {
-  getArticlePageAction
+  getArticlePageAction,
+  getSwiperAction
 } from './store/actionCreators';
 
 function Home(props) {
-  const { articleList } = props;
+  const { 
+    articleList,
+    swiperList
+  } = props;
   const {
-    getArticlePageDispatch
+    getArticlePageDispatch,
+    getSwiperDispatch
   } = props;
 
   // 分页 当前页
@@ -51,11 +56,11 @@ function Home(props) {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 2400,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     arrows: false
   };
 
@@ -67,11 +72,16 @@ function Home(props) {
       blogStatus: 1
     });
   }, [getArticlePageDispatch]);
+
+  useEffect(() => {
+    getSwiperDispatch();
+  }, [getSwiperDispatch]);
+
   return (
     <React.Fragment>
       <DivBanner>
         <div className="container">
-          <Swiper settings={settings}></Swiper>
+          <Swiper settings={settings} swiperList={swiperList}></Swiper>
         </div>
       </DivBanner>
       <Main>
@@ -112,13 +122,18 @@ function Home(props) {
 }
 
 const mapState = (state) => ({
-  articleList: state.home.articleList
+  articleList: state.home.articleList,
+  swiperList: state.home.swiperList,
+  categoryList: state.home.categoryList
 });
 
 const mapDispatch = dispatch => {
   return {
     getArticlePageDispatch(data) {
       dispatch(getArticlePageAction(data));
+    },
+    getSwiperDispatch() {
+      dispatch(getSwiperAction());
     }
   }
 };

@@ -26,7 +26,7 @@ import {
 } from './style';
 
 function Swiper(props) {
-  const { settings } = props;
+  const { settings, swiperList } = props;
 
   const theme = {
     dark: true
@@ -45,88 +45,57 @@ function Swiper(props) {
       elevation: 0
     },
   }));
+
+  const swiperItem = (list) => {
+    return (
+      list.map(item => (
+        <div className={useStyles.root} key={item.id}>
+          <Grid container spacing={0}>
+            <Grid item xs={12} md={8}>
+              <DivPaper className={useStyles.paper} elevation={0} square={true}>
+                <DivMedia>
+                  <AMedia image={React.$imgPath(item.adGroupContextVo.imgUrl)}/>
+                </DivMedia>
+              </DivPaper>
+            </Grid>
+            <DivGrid item xs={12} md={4} theme2={theme}>
+              <DivPaper className={useStyles.paper} elevation={0} square={true}>
+                <DivListContent className="flex-fill p-3 p-lg-5">
+                  <DivListBody>
+                    <DivH2X>
+                      <AH2X>{item.adGroupContextVo.title}</AH2X>
+                    </DivH2X>
+                    <DivListDesc>
+                      <PTextLight>
+                        {item.adGroupContextVo.content}
+                      </PTextLight>
+                    </DivListDesc>
+                  </DivListBody>
+                  <DivListFooter>
+                    <DivFooterText>
+                      <span>
+                        <AFooterCategory>推荐</AFooterCategory>
+                      </span>
+                      <svg className="icon" aria-hidden="true">
+                        <use xlinkHref="#icon-line"></use>
+                      </svg>
+                      <time dateTime={item.adGroupContextVo.createTime}>{item.adGroupContextVo.createTime}</time>
+                    </DivFooterText>
+                  </DivListFooter>
+                </DivListContent>
+              </DivPaper>
+            </DivGrid>
+          </Grid>
+        </div>
+      ))
+    )
+  }
+
   return (
     <Slider {...settings}>
-      {/* <DivGutters className="row">
-        <h3>1</h3>
-        <h3>1222</h3>
-      </DivGutters> */}
-      <div className={useStyles.root}>
-        <Grid container spacing={0}>
-          <Grid item xs={12} md={8}>
-            <DivPaper className={useStyles.paper} elevation={0} square={true}>
-              <DivMedia>
-                <AMedia />
-              </DivMedia>
-            </DivPaper>
-          </Grid>
-          <DivGrid item xs={12} md={4} theme2={theme}>
-            <DivPaper className={useStyles.paper} elevation={0} square={true}>
-              <DivListContent className="flex-fill p-3 p-lg-5">
-                <DivListBody>
-                  <DivH2X>
-                    <AH2X>5 年估值 80 亿美金，寻找中国版 Peloton | 36氪新风向</AH2X>
-                  </DivH2X>
-                  <DivListDesc>
-                    <PTextLight>
-                    编者按：本文来自微信公众号“IPO那点事”（ID：ipopress），作者 亚轩，数据支持 勾股大数据；36氪经授权发布...
-                    </PTextLight>
-                  </DivListDesc>
-                </DivListBody>
-                <DivListFooter>
-                  <DivFooterText>
-                    <span>
-                      <AFooterCategory>生活</AFooterCategory>
-                    </span>
-                    <svg className="icon" aria-hidden="true">
-                      <use xlinkHref="#icon-line"></use>
-                    </svg>
-                    <time dateTime="2020-01-30 15:13:47">2020-01-30</time>
-                  </DivFooterText>
-                </DivListFooter>
-              </DivListContent>
-            </DivPaper>
-          </DivGrid>
-        </Grid>
-      </div>
-      <div className={useStyles.root}>
-        <Grid container spacing={0} style={{borderRadius: '.25rem'}}>
-          <Grid item xs={12} md={8}>
-            <DivPaper className={useStyles.paper} elevation={0} square={true}>
-              <DivMedia>
-                <AMedia />
-              </DivMedia>
-            </DivPaper>
-          </Grid>
-          <DivGrid item xs={12} md={4} theme2={theme}>
-            <DivPaper className={useStyles.paper} elevation={0} square={true}>
-              <DivListContent className="flex-fill p-3 p-lg-5">
-                <DivListBody>
-                  <DivH2X>
-                    <AH2X>5 年估值 80 亿美金，寻找中国版 Peloton | 36氪新风向</AH2X>
-                  </DivH2X>
-                  <DivListDesc>
-                    <PTextLight>
-                    编者按：本文来自微信公众号“IPO那点事”（ID：ipopress），作者 亚轩，数据支持 勾股大数据；36氪经授权发布...
-                    </PTextLight>
-                  </DivListDesc>
-                </DivListBody>
-                <DivListFooter>
-                  <DivFooterText>
-                    <span>
-                      <AFooterCategory>生活</AFooterCategory>
-                    </span>
-                    <svg className="icon" aria-hidden="true">
-                      <use xlinkHref="#icon-line"></use>
-                    </svg>
-                    <time dateTime="2020-01-30 15:13:47">2020-01-30</time>
-                  </DivFooterText>
-                </DivListFooter>
-              </DivListContent>
-            </DivPaper>
-          </DivGrid>
-        </Grid>
-      </div>
+      {
+        swiperItem(swiperList)
+      }
     </Slider>
   );
 }

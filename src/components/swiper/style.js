@@ -51,7 +51,7 @@ export const AMedia =styled(AElement)`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-color: rgba(120, 120, 120, 0.1);
-  background-image: url(https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2019/06/2019062004540484.jpg);
+  background-image: url(${props => props.image});
 `;
 
 // 轮播图右侧文件描述
