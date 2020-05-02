@@ -16,7 +16,7 @@ function Summary(props) {
       <DivItem>
         <DivCoverMedia>
           <DivCoverContent as="div">
-            <div class="overlay"></div>
+            <div className="overlay"></div>
           </DivCoverContent>
         </DivCoverMedia>
         <DivListContent className="list-content p-3 p-md-4">
@@ -32,8 +32,8 @@ function Summary(props) {
               </div>
             </DivAlientItem>
             <DivBoder>
-              <div class="text-sm h-2x">随着技术的发展，在欣赏或参与竞技体育项目的时候。</div>
-              <div class="border-theme bg-primary"></div>
+              <div className="text-sm h-2x">随着技术的发展，在欣赏或参与竞技体育项目的时候。</div>
+              <div className="border-theme bg-primary"></div>
             </DivBoder>
           </DivListBody>
         </DivListContent>

@@ -31,7 +31,12 @@ export default [
         ]
       },
       {
-        path: "/category/:id",
+        path: "/category/:cid",
+        component: SuspenseComponent(CategoryComponent),
+        exact: true
+      },
+      {
+        path: "/tag/:tid",
         component: SuspenseComponent(CategoryComponent),
         exact: true
       },

@@ -1,4 +1,5 @@
-import React from 'react';
+import React,
+  { useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -15,6 +16,15 @@ import {
 } from './style';
 
 function Category(props) {
+  const {
+    match:{params:{ cid }},
+    match:{params:{ tid }}
+  } = props;
+
+  useEffect(() => {
+    console.log(cid, tid);
+  }, [cid, tid]);
+
   // material-ui
   const useStyles = makeStyles(theme => ({
     root: {
@@ -41,7 +51,7 @@ function Category(props) {
             <Grid item lg={8}>
               <DivPaper className={useStyles.paper} elevation={0}>
                 <Summary />
-                <List />
+                <List list={[]} />
               </DivPaper>
             </Grid>
             <Hidden smDown>
