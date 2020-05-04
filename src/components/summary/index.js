@@ -11,6 +11,8 @@ import {
 } from './style';
 
 function Summary(props) {
+  const { total } = props;
+
   return (
     <DivListCover>
       <DivItem>
@@ -28,7 +30,7 @@ function Summary(props) {
                 <svg className="icon" aria-hidden="true">
                   <use xlinkHref="#icon-file"></use>
                 </svg>
-                <span className="text-xs">8 篇文章</span>
+                <span className="text-xs">{total} 篇文章</span>
               </div>
             </DivAlientItem>
             <DivBoder>

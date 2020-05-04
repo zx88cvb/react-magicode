@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 
+import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
@@ -14,7 +15,7 @@ import {
   AHome
 } from './style';
 
-function Article() {
+function Article(props) {
   // material-ui
   const useStyles = makeStyles(theme => ({
     root: {
@@ -27,6 +28,14 @@ function Article() {
     },
   }));
 
+
+  const { id } = props.match.params;
+
+
+  useEffect(() => {
+    console.log(id);
+  }, [id]);
+  
   return (
     <Main>
       <div className="container">
@@ -63,4 +72,16 @@ function Article() {
   );
 }
 
-export default React.memo(Article);
+const mapState = (state) => ({
+  // article: state.article.article
+});
+
+const mapDispatch = dispatch => {
+  return {
+    getArticleDispatch(data) {
+      // dispatch(getArticleAction(data));
+    }
+  }
+};
+
+export default connect(mapState, mapDispatch)(React.memo(Article));

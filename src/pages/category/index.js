@@ -1,12 +1,17 @@
 import React,
   { useEffect } from 'react';
 
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import List from 'components/list';
 import Sidebar from 'components/sidebar';
 import Summary from 'components/summary';
+
+import {
+  getArticlePageAction
+} from 'pages/home/store/actionCreators';
 
 import {
   Main,
@@ -16,14 +21,6 @@ import {
 } from './style';
 
 function Category(props) {
-  const {
-    match:{params:{ cid }},
-    match:{params:{ tid }}
-  } = props;
-
-  useEffect(() => {
-    console.log(cid, tid);
-  }, [cid, tid]);
 
   // material-ui
   const useStyles = makeStyles(theme => ({
@@ -36,6 +33,31 @@ function Category(props) {
       color: theme.palette.text.secondary,
     },
   }));
+
+  const {
+    match:{params:{ cid }},
+    match:{params:{ tid }}
+  } = props;
+
+  const { 
+    articleList,
+    page: {total}
+  } = props;
+  const {
+    getArticlePageDispatch
+  } = props;
+
+  console.log(props);
+
+  useEffect(() => {
+    getArticlePageDispatch({
+      pageNum: 1,
+      pageSize: 10,
+      blogStatus: 1,
+      categoryId: cid,
+      tagId: tid
+    });
+  }, [getArticlePageDispatch, cid, tid]);
   return (
     <Main>
       <div className="container">
@@ -50,8 +72,8 @@ function Category(props) {
           <Grid container spacing={3}>
             <Grid item lg={8}>
               <DivPaper className={useStyles.paper} elevation={0}>
-                <Summary />
-                <List list={[]} />
+                <Summary total={total}/>
+                <List list={articleList} />
               </DivPaper>
             </Grid>
             <Hidden smDown>
@@ -68,4 +90,17 @@ function Category(props) {
   );
 }
 
-export default React.memo(Category);
+const mapState = (state) => ({
+  articleList: state.home.articleList,
+  page: state.home.page
+});
+
+const mapDispatch = dispatch => {
+  return {
+    getArticlePageDispatch(data) {
+      dispatch(getArticlePageAction(data));
+    }
+  }
+};
+
+export default connect(mapState, mapDispatch)(React.memo(Category));

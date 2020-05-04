@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import style,
 {
   AElement,
@@ -42,7 +44,7 @@ export const DivMedia = styled.div`
   }
 `;
 
-export const AMediaConent = styled(AElement)`
+export const AMediaConent = styled(Link)`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -73,7 +75,7 @@ export const DivListFooter = styled.div`
   margin-top: 0.5rem;
 `;
 
-export const AListBody = styled(AElement)`
+export const AListBody = styled(Link)`
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -82,6 +84,9 @@ export const AListBody = styled(AElement)`
   line-height: 1.4285714286;
   font-size: 1.125rem;
   color: inherit;
+
+  text-decoration: none;
+  cursor: pointer;
 
   :hover {
     color: ${style["font-color-light-hover"]};

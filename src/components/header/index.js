@@ -19,7 +19,7 @@ import {
 
 function Header(props) {
   const logo = {
-    src: 'https://pandapro.demo.nicetheme.xyz/wp-content/uploads/2019/11/2019110410082940.png',
+    src: 'http://cdn.angelive.fun/logo.png',
     alt: 'Angelive'
   }
   return (
@@ -39,7 +39,7 @@ function Header(props) {
                   <Link to="/category/1">科技</Link>
                 </LiMenuItem>
                 <LiMenuItem>
-                  <Link to="/category/1">主题</Link>
+                  <Link to="/category/25">主题</Link>
                 </LiMenuItem>
                 <LiMenuItem>
                   <Link to="/category/1">友情链接</Link>
