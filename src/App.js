@@ -1,7 +1,8 @@
 import React from 'react';
 import store from './store';
 import { renderRoutes } from "react-router-config";
-import routes from "./routes/index";
+import routes from "./routes";
+import ScrollToTop from "./routes/scroll";
 import { BrowserRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux';
@@ -17,6 +18,7 @@ function App() {
       <GlobalStyle />
       <CommonStyle />
       <BrowserRouter>
+        <ScrollToTop />
         <Header/>
         {/* 渲染匹配路径的路由组件 */}
         {renderRoutes(routes)}

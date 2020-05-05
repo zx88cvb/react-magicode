@@ -86,7 +86,7 @@ export const DivPostHeader = styled.div`
 export const DivPostContent = styled.div`
   &&& {
     img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
 
       vertical-align: middle;
@@ -100,7 +100,7 @@ export const DivPostContent = styled.div`
       word-wrap: break-word;
 
       color: #393E46;
-      margin: 0;
+      /* margin: 0; */
       white-space: normal;
       word-break: break-all;
     }
