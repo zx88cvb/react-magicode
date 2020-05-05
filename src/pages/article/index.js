@@ -9,6 +9,10 @@ import Post from 'components/post';
 import Comment from 'components/comment';
 
 import {
+  getArticleAction
+} from './store/actionCreators';
+
+import {
   Main,
   DivPaper,
   DivBreadcrumbs,
@@ -29,12 +33,21 @@ function Article(props) {
   }));
 
 
+  // 获取文章id
   const { id } = props.match.params;
 
+  // 获取dispatch
+  const { getArticleDispatch } = props;
+
+  // 获取state数据
+  const { article } = props;
+
+  console.log(article);
 
   useEffect(() => {
-    console.log(id);
-  }, [id]);
+    // 获取文章
+    getArticleDispatch(id);
+  }, [id, getArticleDispatch]);
   
   return (
     <Main>
@@ -45,16 +58,16 @@ function Article(props) {
           </span>
           <span className="sep">›</span>
           <span>
-            <AHome to="/category/1">科技</AHome>
+            <AHome to={`/category/${article.blogCategoryVo.id}`}>{article.blogCategoryVo.categoryName}</AHome>
           </span>
           <span className="sep">›</span>
-          <span>电商混战618：数字狂欢背后，或现“水逆”隐忧</span>
+          <span>{article.title}</span>
         </DivBreadcrumbs>
         <div className={useStyles.root}>
           <Grid container spacing={3}>
             <Grid item lg={8}>
               <DivPaper className={useStyles.paper} elevation={0}>
-                <Post></Post>
+                <Post article={article}></Post>
                 <Comment></Comment>
               </DivPaper>
             </Grid>
@@ -73,13 +86,13 @@ function Article(props) {
 }
 
 const mapState = (state) => ({
-  // article: state.article.article
+  article: state.article.article
 });
 
 const mapDispatch = dispatch => {
   return {
     getArticleDispatch(data) {
-      // dispatch(getArticleAction(data));
+      dispatch(getArticleAction(data));
     }
   }
 };

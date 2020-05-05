@@ -64,7 +64,7 @@ function* getSwiper() {
   }
 }
 
-export default function* articleSaga() {
+export default function* homeSaga() {
   yield takeEvery(constants.ARTICLE_LIST, getArticleList);
   yield takeEvery(constants.SWIPER_LIST, getSwiper);
 }

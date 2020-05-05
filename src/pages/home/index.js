@@ -13,7 +13,8 @@ import {
   Main,
   DivListNav,
   ButtonNav,
-  DivPaper
+  DivPaper,
+  DivLoad
 } from './style';
 
 import {
@@ -26,19 +27,21 @@ function Home(props) {
     articleList,
     swiperList
   } = props;
+
+  // 获取dispatch
   const {
     getArticlePageDispatch,
     getSwiperDispatch
   } = props;
 
   // 分页 当前页
-  // const [pageNum, setPageNum] = useState(1);
+  const [pageNum, setPageNum] = useState(1);
 
   // 每页个数
-  // const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(10);
 
   // 博客状态
-  // const [blogStatus, setBlogStatus] = useState(1);
+  const [blogStatus, setBlogStatus] = useState(1);
 
   // material-ui
   const useStyles = makeStyles(theme => ({
@@ -67,11 +70,11 @@ function Home(props) {
 
   useEffect(() => {
     getArticlePageDispatch({
-      pageNum: 1,
-      pageSize: 10,
-      blogStatus: 1
+      pageNum: pageNum,
+      pageSize: pageSize,
+      blogStatus: blogStatus
     });
-  }, [getArticlePageDispatch]);
+  }, [pageNum, pageSize, blogStatus, getArticlePageDispatch]);
 
   useEffect(() => {
     getSwiperDispatch();
@@ -102,6 +105,11 @@ function Home(props) {
                       </ul>
                     </DivListNav>
                     <List list={articleList} />
+                    <DivLoad>
+                      <button className="dposts-ajax-load"
+                        type="button"
+                        onClick={() => setPageNum(pageNum + 1)}>加载更多</button>
+                    </DivLoad>
                   </DivPaper>
                 </Grid>
                 <Hidden smDown>

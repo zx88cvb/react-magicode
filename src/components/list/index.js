@@ -36,7 +36,6 @@ function List(props) {
     list
   } = props;
 
-
   // 遍历文章list
   const articleList = (list) => {
     return (
@@ -46,9 +45,7 @@ function List(props) {
             <Grid item xs={4} md={4}>
               <DivPaper className={useStyles.paper} elevation={0}>
                 <DivMedia>
-                  <AMediaConent title={item.title}
-                    image={React.$imgPath(item.thumbnail)}
-                    to={`/article/${item.id}`}/>
+                  <AMediaConent to={`/article/${item.id}`} title={item.title} image={React.$imgPath(item.thumbnail)}/>
                 </DivMedia>
               </DivPaper>
             </Grid>

@@ -20,3 +20,14 @@ export function selectNewsRandThreeComment () {
     params: data
   });
 }
+
+/* 根据id查询 */
+export function getBlogArticleById (id) {
+  const url = `/api/blogapi/blog/article/${id}`
+
+  const data = {
+  }
+  return axios.get(url, {
+    params: data
+  });
+}

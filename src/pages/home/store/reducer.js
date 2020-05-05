@@ -19,6 +19,8 @@ export default produce((draft = defaultState, action) => {
       draft.page = action.data;
       return draft;
     case actionTypes.ARTICLE_LIST_SUCCESS:
+      let arr = [...draft.articleList, ...action.data.data.records];
+      console.log(defaultState);
       draft.articleList = action.data.data.records;
       draft.page.current = action.data.data.current;
       draft.page.size = action.data.data.size;
