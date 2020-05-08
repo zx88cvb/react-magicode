@@ -10,7 +10,12 @@ const defaultState = {
   },
   articleList: [],
   swiperList: [],
-  categoryList: []
+  categoryList: [],
+  sidebar: {
+    tagList: [],
+    randNews: [],
+    commentNews: []
+  }
 };
 
 export default produce((draft = defaultState, action) => {
@@ -20,7 +25,6 @@ export default produce((draft = defaultState, action) => {
       return draft;
     case actionTypes.ARTICLE_LIST_SUCCESS:
       let arr = [...draft.articleList, ...action.data.data.records];
-      console.log(defaultState);
       draft.articleList = action.data.data.records;
       draft.page.current = action.data.data.current;
       draft.page.size = action.data.data.size;
@@ -32,6 +36,11 @@ export default produce((draft = defaultState, action) => {
     case actionTypes.SWIPER_LIST_SUCCESS:
       draft.swiperList = action.data.data.swiperList;
       draft.categoryList = action.data.data.listCategory;
+      return draft;
+    case actionTypes.ARTICLE_RAND_COMMENT_LIST:
+      return draft;
+    case actionTypes.ARTICLE_RAND_COMMENT_LIST_SUCCESS:
+      draft.sidebar = action.data.data;
       return draft;
     default:
       return draft;

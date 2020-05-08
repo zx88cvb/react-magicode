@@ -1,6 +1,10 @@
 import React,
   { useEffect } from 'react';
 
+import {
+  useParams
+} from "react-router-dom";
+
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -34,20 +38,23 @@ function Category(props) {
     },
   }));
 
+  // 路由
   const {
-    match:{params:{ cid }},
-    match:{params:{ tid }}
-  } = props;
+    cid,
+    tid
+  } = useParams();
 
+  // state
   const { 
     articleList,
     page: {total}
   } = props;
+
+  // dispatch
   const {
     getArticlePageDispatch
   } = props;
 
-  console.log(props);
 
   useEffect(() => {
     getArticlePageDispatch({

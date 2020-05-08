@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import SidebarRandom from './random';
 import SidebarRecommended from './recommended';
@@ -8,24 +8,13 @@ import {
   DivSidebar
 } from './style';
 
-import {
-  getArticleRandCommentAction
-} from './store/actionCreators';
-
 function Sidebar(props) {
-  const {
-    tagList,
+
+  const { 
     randNews,
-    commentNews
+    commentNews,
+    tagList
   } = props;
-
-  const {
-    getArticleRandCommentDispatch
-  } = props;
-
-  useEffect(() => {
-    getArticleRandCommentDispatch();
-  }, [getArticleRandCommentDispatch]);
 
   return (
     <DivSidebar>
@@ -37,17 +26,9 @@ function Sidebar(props) {
 }
 
 const mapState = (state) => ({
-  tagList: state.sidebar.tagList,
-  randNews: state.sidebar.randNews,
-  commentNews: state.sidebar.commentNews
+  randNews: state.home.sidebar.randNews,
+  commentNews: state.home.sidebar.commentNews,
+  tagList: state.home.sidebar.tagList
 });
 
-const mapDispatch = dispatch => {
-  return {
-    getArticleRandCommentDispatch() {
-      dispatch(getArticleRandCommentAction());
-    }
-  }
-};
-
-export default connect(mapState, mapDispatch)(React.memo(Sidebar));
+export default connect(mapState, null)(React.memo(Sidebar));

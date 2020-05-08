@@ -1,4 +1,7 @@
 import React,{ useEffect } from 'react';
+import {
+  useParams
+} from "react-router-dom";
 
 import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
@@ -34,7 +37,7 @@ function Article(props) {
 
 
   // 获取文章id
-  const { id } = props.match.params;
+  const { id } = useParams();
 
   // 获取dispatch
   const { getArticleDispatch } = props;

@@ -19,13 +19,15 @@ import {
 
 import {
   getArticlePageAction,
-  getSwiperAction
+  getSwiperAction,
+  getArticleRandCommentAction
 } from './store/actionCreators';
 
 function Home(props) {
   const { 
     articleList,
-    swiperList
+    swiperList,
+    sidebar
   } = props;
 
   // 获取dispatch
@@ -115,7 +117,7 @@ function Home(props) {
                 <Hidden smDown>
                   <Grid item lg={4}>
                     <DivPaper className={useStyles.paper} elevation={0}>
-                      <Sidebar />
+                      <Sidebar sidebar={sidebar} />
                     </DivPaper>
                   </Grid>
                 </Hidden>
@@ -132,7 +134,8 @@ function Home(props) {
 const mapState = (state) => ({
   articleList: state.home.articleList,
   swiperList: state.home.swiperList,
-  categoryList: state.home.categoryList
+  categoryList: state.home.categoryList,
+  sidebar: state.home.sidebar
 });
 
 const mapDispatch = dispatch => {
@@ -142,6 +145,9 @@ const mapDispatch = dispatch => {
     },
     getSwiperDispatch() {
       dispatch(getSwiperAction());
+    },
+    getArticleRandCommentDispatch() {
+      dispatch(getArticleRandCommentAction());
     }
   }
 };
