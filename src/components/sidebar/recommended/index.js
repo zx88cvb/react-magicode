@@ -1,4 +1,6 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
+
 import {
   DivCard,
   DivCardHeader,
@@ -14,18 +16,26 @@ import {
 function SidebarRecommend(props) {
   const { commentNews } = props;
 
+  let history = useHistory();
+
+  const handleClick = (id) => {
+    history.push(`/article/${id}`);
+  }
+
   const articleCommentList = (list) => {
     return (
       list.map(item => (
         <div className="py-2" key={item.id}>
           <DivRecommendedListItem>
             <DivRecommendedMedia>
-              <ARecommendedMedia image={React.$imgPath(item.thumbnail)}>
+              <ARecommendedMedia 
+                onClick={() => handleClick(item.id)}
+                image={React.$imgPath(item.thumbnail)}>
                 <SpanRecommendedOverlay />
               </ARecommendedMedia>
             </DivRecommendedMedia>
             <DivRecommendedListContent>
-              <DivRecommendedListBody>
+              <DivRecommendedListBody onClick={() => handleClick(item.id)}>
                 <a href="#">{item.title}</a>
               </DivRecommendedListBody>
               <DivRecommendedListFooter>

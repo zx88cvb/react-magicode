@@ -33,7 +33,8 @@ function Home(props) {
   // 获取dispatch
   const {
     getArticlePageDispatch,
-    getSwiperDispatch
+    getSwiperDispatch,
+    getArticleRandCommentDispatch
   } = props;
 
   // 分页 当前页

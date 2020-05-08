@@ -45,8 +45,6 @@ function Article(props) {
   // 获取state数据
   const { article } = props;
 
-  console.log(article);
-
   useEffect(() => {
     // 获取文章
     getArticleDispatch(id);
