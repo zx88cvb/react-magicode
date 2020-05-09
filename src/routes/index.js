@@ -44,6 +44,11 @@ export default [
         path: "/article/:id",
         component: SuspenseComponent(ArticleComponent),
         exact: true
+      },
+      {
+        path: "/news/:id",
+        component: SuspenseComponent(ArticleComponent),
+        exact: true
       }
     ]
   }

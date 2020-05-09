@@ -1,5 +1,8 @@
 import React,
-  { useEffect } from 'react';
+{ 
+  useState,
+  useEffect 
+} from 'react';
 
 import {
   useParams
@@ -21,7 +24,8 @@ import {
   Main,
   DivPaper,
   DivBreadcrumbs,
-  AHome
+  AHome,
+  DivLoad
 } from './style';
 
 function Category(props) {
@@ -37,6 +41,15 @@ function Category(props) {
       color: theme.palette.text.secondary,
     },
   }));
+
+  // 分页 当前页
+  const [pageNum, setPageNum] = useState(1);
+
+  // 每页个数
+  const [pageSize, setPageSize] = useState(10);
+
+  // 博客状态
+  const [blogStatus, setBlogStatus] = useState(1);
 
   // 路由
   const {
@@ -58,9 +71,9 @@ function Category(props) {
 
   useEffect(() => {
     getArticlePageDispatch({
-      pageNum: 1,
-      pageSize: 10,
-      blogStatus: 1,
+      pageNum: pageNum,
+      pageSize: pageSize,
+      blogStatus: blogStatus,
       categoryId: cid,
       tagId: tid
     });
@@ -81,6 +94,11 @@ function Category(props) {
               <DivPaper className={useStyles.paper} elevation={0}>
                 <Summary total={total}/>
                 <List list={articleList} />
+                <DivLoad>
+                  <button className="dposts-ajax-load"
+                    type="button"
+                    onClick={() => setPageNum(pageNum + 1)}>加载更多</button>
+                </DivLoad>
               </DivPaper>
             </Grid>
             <Hidden smDown>

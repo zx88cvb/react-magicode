@@ -11,6 +11,7 @@ import { CommonStyle } from './assets/style/global-style';
 
 import Header from './components/header';
 import Footer from './components/footer';
+import Arrow from './components/arrow';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         {/* 渲染匹配路径的路由组件 */}
         {renderRoutes(routes)}
         <Footer />
+        <Arrow />
       </BrowserRouter>
     </Provider>
   );

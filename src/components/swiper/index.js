@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from "react-slick";
-import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -46,6 +46,12 @@ function Swiper(props) {
     },
   }));
 
+  let history = useHistory();
+
+  const handleClick = (uri) => {
+    history.push(uri);
+  }
+
   const swiperItem = (list) => {
     return (
       list.map(item => (
@@ -53,7 +59,7 @@ function Swiper(props) {
           <Grid container spacing={0}>
             <Grid item xs={12} md={8}>
               <DivPaper className={useStyles.paper} elevation={0} square={true}>
-                <DivMedia>
+                <DivMedia onClick={() => handleClick(item.adGroupContextVo.linkUrl)}>
                   <AMedia image={React.$imgPath(item.adGroupContextVo.imgUrl)}/>
                 </DivMedia>
               </DivPaper>
@@ -63,7 +69,7 @@ function Swiper(props) {
                 <DivListContent className="flex-fill p-3 p-lg-5">
                   <DivListBody>
                     <DivH2X>
-                      <AH2X>{item.adGroupContextVo.title}</AH2X>
+                      <AH2X onClick={() => handleClick(item.adGroupContextVo.linkUrl)}>{item.adGroupContextVo.title}</AH2X>
                     </DivH2X>
                     <DivListDesc>
                       <PTextLight>

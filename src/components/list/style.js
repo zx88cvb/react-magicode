@@ -97,6 +97,12 @@ export const DivListDesc = styled.div`
   margin-bottom: 1rem;
   margin-top: 1rem;
 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+
   p {
     color: ${style["font-color-desc"]};
     font-size: 0.875rem;

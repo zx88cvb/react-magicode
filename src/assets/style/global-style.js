@@ -35,6 +35,10 @@ export const CommonStyle = createGlobalStyle`
     line-height: 1.5;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: #fdfbfb;
   }

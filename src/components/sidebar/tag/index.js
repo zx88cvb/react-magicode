@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   DivCard,
@@ -17,9 +18,10 @@ function SidebarTag(props) {
       <DivTagCloud>
         {
           tagList.map(item => (
-            <a href="#" key={item.id}>
+            <Link key={item.id}
+              to={`/tag/${item.id}`}>
               {item.tagName}
-            </a>
+            </Link>
           ))
         }
       </DivTagCloud>
