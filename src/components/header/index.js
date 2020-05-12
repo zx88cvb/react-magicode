@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
+
+import {
+  getHeaderAction
+} from './store/actionCreators';
+
 import {
   HeaderStyle,
   Navbar,
@@ -10,7 +16,6 @@ import {
   DivCollapse,
   UlMainMenu,
   LiMenuItem,
-  AMenuItem,
   UlItemOrder,
   LiItemNav,
   AItemNav,
@@ -22,6 +27,31 @@ function Header(props) {
     src: 'http://cdn.angelive.fun/logo.png',
     alt: 'Angelive'
   }
+
+  const { headerList } = props;
+
+  // 获取dispatch
+  const {
+    getHeaderDispatch
+  } = props;
+
+  useEffect(() => {
+    getHeaderDispatch();
+  }, [getHeaderDispatch]);
+
+  // 遍历文章list
+  const articleList = (list) => {
+    return (
+      list.map(item => (
+        <LiMenuItem key={item.id}>
+          <Link to={item.adGroupContextVo.linkUrl}
+           alt={item.adGroupContextVo.remake}>
+             {item.adGroupContextVo.title}
+          </Link>
+        </LiMenuItem>
+      ))
+    );
+  }
   return (
     <HeaderStyle>
       <Navbar>
@@ -32,18 +62,9 @@ function Header(props) {
           <Hidden smDown>
             <DivCollapse className="order-2">
               <UlMainMenu>
-                <LiMenuItem>
-                  <Link to="/">主页</Link>
-                </LiMenuItem>
-                <LiMenuItem>
-                  <Link to="/category/1">科技</Link>
-                </LiMenuItem>
-                <LiMenuItem>
-                  <Link to="/category/25">主题</Link>
-                </LiMenuItem>
-                <LiMenuItem>
-                  <Link to="/category/1">友情链接</Link>
-                </LiMenuItem>
+                {
+                  articleList(headerList)
+                }
               </UlMainMenu>
               <UlItemOrder>
                 <LiItemNav>
@@ -89,4 +110,17 @@ function Header(props) {
   );
 }
 
-export default React.memo(Header);
+
+const mapState = (state) => ({
+  headerList: state.header.headerList
+});
+
+const mapDispatch = dispatch => {
+  return {
+    getHeaderDispatch() {
+      dispatch(getHeaderAction());
+    }
+  }
+};
+
+export default connect(mapState, mapDispatch)(React.memo(Header));

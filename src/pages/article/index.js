@@ -16,6 +16,10 @@ import {
 } from './store/actionCreators';
 
 import {
+  getArticleRandCommentAction
+} from 'pages/home/store/actionCreators';
+
+import {
   Main,
   DivPaper,
   DivBreadcrumbs,
@@ -40,15 +44,25 @@ function Article(props) {
   const { id } = useParams();
 
   // 获取dispatch
-  const { getArticleDispatch } = props;
+  const { 
+    getArticleDispatch,
+    getArticleRandCommentDispatch } = props;
 
   // 获取state数据
-  const { article } = props;
+  const { article, sidebar } = props;
 
   useEffect(() => {
     // 获取文章
     getArticleDispatch(id);
   }, [id, getArticleDispatch]);
+
+  useEffect(() => {
+    if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
+      // 右侧边栏
+      getArticleRandCommentDispatch();
+    }
+    
+  }, [getArticleRandCommentDispatch, sidebar]);
   
   return (
     <Main>
@@ -75,7 +89,7 @@ function Article(props) {
             <Hidden smDown>
               <Grid item lg={4}>
                 <DivPaper className={useStyles.paper} elevation={0}>
-                  <Sidebar />
+                  <Sidebar sidebar={sidebar} />
                 </DivPaper>
               </Grid>
             </Hidden>
@@ -87,13 +101,17 @@ function Article(props) {
 }
 
 const mapState = (state) => ({
-  article: state.article.article
+  article: state.article.article,
+  sidebar: state.home.sidebar
 });
 
 const mapDispatch = dispatch => {
   return {
     getArticleDispatch(data) {
       dispatch(getArticleAction(data));
+    },
+    getArticleRandCommentDispatch() {
+      dispatch(getArticleRandCommentAction());
     }
   }
 };

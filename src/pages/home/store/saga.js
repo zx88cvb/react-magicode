@@ -97,7 +97,7 @@ function* getArticleRandComment() {
 export default function* homeSaga() {
   yield takeEvery(constants.ARTICLE_LIST, getArticleList);
   yield takeEvery(constants.SWIPER_LIST, getSwiper);
-  yield takeEvery(constants.SWIPER_LIST, getArticleRandComment);
+  yield takeEvery(constants.ARTICLE_RAND_COMMENT_LIST, getArticleRandComment);
 }
 
 // export const HomeSaga = [(watchGetList)];

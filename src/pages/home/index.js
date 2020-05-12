@@ -83,6 +83,14 @@ function Home(props) {
     getSwiperDispatch();
   }, [getSwiperDispatch]);
 
+  useEffect(() => {
+    if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
+      // 右侧边栏
+      getArticleRandCommentDispatch();
+    }
+    
+  }, [getArticleRandCommentDispatch, sidebar]);
+
   return (
     <React.Fragment>
       <DivBanner>

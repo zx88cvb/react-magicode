@@ -18,7 +18,7 @@ const defaultState = {
   }
 };
 
-export default produce((draft = defaultState, action) => {
+export default produce((draft, action) => {
   switch(action.type) {
     case actionTypes.ARTICLE_LIST:
       draft.page = action.data;
@@ -45,4 +45,4 @@ export default produce((draft = defaultState, action) => {
     default:
       return draft;
   }
-})
+}, defaultState);

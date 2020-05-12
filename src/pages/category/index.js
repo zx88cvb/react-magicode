@@ -21,6 +21,10 @@ import {
 } from 'pages/home/store/actionCreators';
 
 import {
+  getArticleRandCommentAction
+} from 'pages/home/store/actionCreators';
+
+import {
   Main,
   DivPaper,
   DivBreadcrumbs,
@@ -60,12 +64,14 @@ function Category(props) {
   // state
   const { 
     articleList,
-    page: {total}
+    page: {total},
+    sidebar
   } = props;
 
   // dispatch
   const {
-    getArticlePageDispatch
+    getArticlePageDispatch,
+    getArticleRandCommentDispatch
   } = props;
 
 
@@ -78,6 +84,14 @@ function Category(props) {
       tagId: tid
     });
   }, [getArticlePageDispatch, cid, tid]);
+
+  useEffect(() => {
+    if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
+      // 右侧边栏
+      getArticleRandCommentDispatch();
+    }
+    
+  }, [getArticleRandCommentDispatch, sidebar]);
   return (
     <Main>
       <div className="container">
@@ -104,7 +118,7 @@ function Category(props) {
             <Hidden smDown>
               <Grid item lg={4}>
                 <DivPaper className={useStyles.paper} elevation={0}>
-                  <Sidebar />
+                  <Sidebar sidebar={sidebar} />
                 </DivPaper>
               </Grid>
             </Hidden>
@@ -117,13 +131,17 @@ function Category(props) {
 
 const mapState = (state) => ({
   articleList: state.home.articleList,
-  page: state.home.page
+  page: state.home.page,
+  sidebar: state.home.sidebar
 });
 
 const mapDispatch = dispatch => {
   return {
     getArticlePageDispatch(data) {
       dispatch(getArticlePageAction(data));
+    },
+    getArticleRandCommentDispatch() {
+      dispatch(getArticleRandCommentAction());
     }
   }
 };

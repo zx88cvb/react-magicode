@@ -2,19 +2,15 @@ import * as actionTypes from './constants';
 import produce from 'immer';
 
 const defaultState = {
-  article: {
-    blogCategoryVo: {},
-    tagList: []
-  },
+  headerList: []
 };
 
 export default produce((draft, action) => {
   switch(action.type) {
-    case actionTypes.ARTICLE_ITEM:
-      draft.articleId = action.data;
+    case actionTypes.HEADER_LIST:
       return draft;
-    case actionTypes.ARTICLE_ITEM_SUCCESS:
-      draft.article = action.data.data;
+    case actionTypes.HEADER_LIST_SUCCESS:
+      draft.headerList = action.data.data;
       return draft;
     default:
       return draft;

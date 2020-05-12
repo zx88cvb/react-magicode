@@ -23,3 +23,19 @@ export function getAdHead () {
     params: data
   });
 }
+
+// 查询头部广告内容
+export function getAdLink () {
+  const url = '/api/adapi/api/adgroup/link/content'
+
+  const data = {
+
+  }
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  }).catch(function (response) {
+    console.log(response)
+  })
+}
