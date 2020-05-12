@@ -24,13 +24,13 @@ export default produce((draft, action) => {
       draft.page = action.data;
       return draft;
     case actionTypes.ARTICLE_LIST_SUCCESS:
-      let arr = [...draft.articleList, ...action.data.data.records];
-      draft.articleList = action.data.data.records;
+      // let arr = [...draft.articleList, ...action.data.data.records];
+      draft.articleList.push(...action.data.data.records);
       draft.page.current = action.data.data.current;
       draft.page.size = action.data.data.size;
       draft.page.pages = action.data.data.pages;
       draft.page.total = action.data.data.total;
-      return draft;
+      return
     case actionTypes.SWIPER_LIST:
       return draft;
     case actionTypes.SWIPER_LIST_SUCCESS:

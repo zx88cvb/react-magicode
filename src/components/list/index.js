@@ -36,6 +36,12 @@ function List(props) {
     list
   } = props;
 
+  const category = (item) => {
+    return item.blogCategoryVo? (
+      <AUserName>{item.blogCategoryVo.categoryName}</AUserName>
+    ): null;
+  }
+
   // 遍历文章list
   const articleList = (list) => {
     return (
@@ -70,7 +76,9 @@ function List(props) {
                       </svg>
                     </DivIB2>
                     <DivInlineBlock>
-                      <AUserName>{item.blogCategoryVo.categoryName}</AUserName>
+                      {
+                        category(item)
+                      }
                     </DivInlineBlock>
                     <div className="flex-fill"></div>
                     <DivTime>
