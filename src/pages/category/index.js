@@ -1,7 +1,8 @@
 import React,
 { 
   useState,
-  useEffect 
+  useEffect,
+  useMemo 
 } from 'react';
 
 import {
@@ -18,7 +19,7 @@ import Summary from 'components/summary';
 
 import {
   getArticlePageAction
-} from 'pages/home/store/actionCreators';
+} from './store/actionCreators';
 
 import {
   getArticleRandCommentAction
@@ -64,7 +65,10 @@ function Category(props) {
   // state
   const { 
     articleList,
-    page: {total},
+    page: {
+      total,
+      pages
+    },
     sidebar
   } = props;
 
@@ -74,7 +78,6 @@ function Category(props) {
     getArticleRandCommentDispatch
   } = props;
 
-
   useEffect(() => {
     getArticlePageDispatch({
       pageNum: pageNum,
@@ -83,7 +86,7 @@ function Category(props) {
       categoryId: cid,
       tagId: tid
     });
-  }, [getArticlePageDispatch, cid, tid]);
+  }, [pageNum, pageSize, blogStatus, cid, tid, getArticlePageDispatch]);
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
@@ -92,6 +95,20 @@ function Category(props) {
     }
     
   }, [getArticleRandCommentDispatch, sidebar]);
+
+  const isMore = useMemo(() => pageNum === pages, [pageNum, pages]);
+
+  // 加载更多
+  const load = () => {
+    return isMore? null: (
+      <DivLoad>
+        <button className="dposts-ajax-load"
+          type="button"
+          onClick={() => setPageNum(pageNum + 1)}>加载更多</button>
+      </DivLoad>
+    )
+  }
+  
   return (
     <Main>
       <div className="container">
@@ -108,11 +125,14 @@ function Category(props) {
               <DivPaper className={useStyles.paper} elevation={0}>
                 <Summary total={total}/>
                 <List list={articleList} />
-                <DivLoad>
+                {
+                  load()
+                }
+                {/* <DivLoad>
                   <button className="dposts-ajax-load"
                     type="button"
                     onClick={() => setPageNum(pageNum + 1)}>加载更多</button>
-                </DivLoad>
+                </DivLoad> */}
               </DivPaper>
             </Grid>
             <Hidden smDown>
@@ -130,8 +150,8 @@ function Category(props) {
 }
 
 const mapState = (state) => ({
-  articleList: state.home.articleList,
-  page: state.home.page,
+  articleList: state.category.articleList,
+  page: state.category.page,
   sidebar: state.home.sidebar
 });
 

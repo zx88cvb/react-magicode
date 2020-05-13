@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 // import { renderRoutes } from "react-router-config";
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,7 +27,8 @@ function Home(props) {
   const { 
     articleList,
     swiperList,
-    sidebar
+    sidebar,
+    page: { pages }
   } = props;
 
   // 获取dispatch
@@ -91,6 +92,21 @@ function Home(props) {
     
   }, [getArticleRandCommentDispatch, sidebar]);
 
+
+  const isMore = useMemo(() => pageNum === pages, [pageNum, pages]);
+
+  // 加载更多
+  const load = () => {
+    return isMore? null: (
+      <DivLoad>
+        <button className="dposts-ajax-load"
+          type="button"
+          onClick={() => setPageNum(pageNum + 1)}>加载更多</button>
+      </DivLoad>
+    )
+  }
+
+
   return (
     <React.Fragment>
       <DivBanner>
@@ -116,11 +132,14 @@ function Home(props) {
                       </ul>
                     </DivListNav>
                     <List list={articleList} />
-                    <DivLoad>
+                    {
+                      load() 
+                    }
+                    {/* <DivLoad>
                       <button className="dposts-ajax-load"
                         type="button"
                         onClick={() => setPageNum(pageNum + 1)}>加载更多</button>
-                    </DivLoad>
+                    </DivLoad> */}
                   </DivPaper>
                 </Grid>
                 <Hidden smDown>
@@ -144,7 +163,8 @@ const mapState = (state) => ({
   articleList: state.home.articleList,
   swiperList: state.home.swiperList,
   categoryList: state.home.categoryList,
-  sidebar: state.home.sidebar
+  sidebar: state.home.sidebar,
+  page: state.home.page
 });
 
 const mapDispatch = dispatch => {
