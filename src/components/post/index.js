@@ -14,13 +14,13 @@ function Post(props) {
   } = props;
 
   const tagList = (list) => {
-    return(
+    return list? (
       list.map(item => (
         <ATag key={item.id} to={`/tag/${item.id}`}>
           <span className="badge-primary">#{item.tagName}#</span>
         </ATag>
       ))
-    );
+    ): null;
   };
 
   return (

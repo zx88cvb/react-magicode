@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
 
@@ -22,22 +22,21 @@ import {
   ButtonNavBar
 } from './style';
 
-function Header(props) {
+function Header() {
   const logo = {
     src: 'http://cdn.angelive.fun/logo.png',
     alt: 'Angelive'
   }
 
-  const { headerList } = props;
+  // useSelector 代替 mapState
+  const headerList = useSelector(state => state.header.headerList, shallowEqual);
 
-  // 获取dispatch
-  const {
-    getHeaderDispatch
-  } = props;
+  // useDispatch 代替 mapDispatch
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getHeaderDispatch();
-  }, [getHeaderDispatch]);
+    dispatch(getHeaderAction());
+  }, [dispatch]);
 
   // 遍历文章list
   const articleList = (list) => {
@@ -110,17 +109,4 @@ function Header(props) {
   );
 }
 
-
-const mapState = (state) => ({
-  headerList: state.header.headerList
-});
-
-const mapDispatch = dispatch => {
-  return {
-    getHeaderDispatch() {
-      dispatch(getHeaderAction());
-    }
-  }
-};
-
-export default connect(mapState, mapDispatch)(React.memo(Header));
+export default React.memo(Header);
