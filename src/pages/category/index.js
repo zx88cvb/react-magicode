@@ -9,7 +9,7 @@ import {
   useParams
 } from "react-router-dom";
 
-import { connect } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
@@ -62,39 +62,37 @@ function Category(props) {
     tid
   } = useParams();
 
-  // state
-  const { 
-    articleList,
-    page: {
-      total,
-      pages
-    },
-    sidebar
-  } = props;
+  // useSelector 代替 mapState
+  const articleList = useSelector(state => state.category.articleList, shallowEqual);
+  const sidebar = useSelector(state => state.home.sidebar, shallowEqual);
+  const {pages, total} = useSelector(state => state.category.page, shallowEqual);
 
-  // dispatch
-  const {
-    getArticlePageDispatch,
-    getArticleRandCommentDispatch
-  } = props;
+  // useDispatch 代替 mapDispatch
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getArticlePageDispatch({
-      pageNum: pageNum,
-      pageSize: pageSize,
-      blogStatus: blogStatus,
-      categoryId: cid,
-      tagId: tid
-    });
-  }, [pageNum, pageSize, blogStatus, cid, tid, getArticlePageDispatch]);
+
+    dispatch(
+      getArticlePageAction({
+        pageNum,
+        pageSize,
+        blogStatus,
+        categoryId: cid,
+        tagId: tid
+      }
+    ));
+  }, [pageNum, pageSize, blogStatus, cid, tid, dispatch]);
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
       // 右侧边栏
-      getArticleRandCommentDispatch();
+      // getArticleRandCommentDispatch();
+
+      // 右侧边栏
+      dispatch(getArticleRandCommentAction());
     }
     
-  }, [getArticleRandCommentDispatch, sidebar]);
+  }, [dispatch, sidebar]);
 
   const isMore = useMemo(() => pageNum === pages, [pageNum, pages]);
 
@@ -149,21 +147,4 @@ function Category(props) {
   );
 }
 
-const mapState = (state) => ({
-  articleList: state.category.articleList,
-  page: state.category.page,
-  sidebar: state.home.sidebar
-});
-
-const mapDispatch = dispatch => {
-  return {
-    getArticlePageDispatch(data) {
-      dispatch(getArticlePageAction(data));
-    },
-    getArticleRandCommentDispatch() {
-      dispatch(getArticleRandCommentAction());
-    }
-  }
-};
-
-export default connect(mapState, mapDispatch)(React.memo(Category));
+export default React.memo(Category);

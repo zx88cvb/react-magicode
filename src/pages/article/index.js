@@ -3,7 +3,7 @@ import {
   useParams
 } from "react-router-dom";
 
-import { connect } from 'react-redux'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
@@ -26,7 +26,7 @@ import {
   AHome
 } from './style';
 
-function Article(props) {
+function Article() {
   // material-ui
   const useStyles = makeStyles(theme => ({
     root: {
@@ -43,26 +43,25 @@ function Article(props) {
   // 获取文章id
   const { id } = useParams();
 
-  // 获取dispatch
-  const { 
-    getArticleDispatch,
-    getArticleRandCommentDispatch } = props;
+  // useSelector 代替 mapState
+  const article = useSelector(state => state.article.article, shallowEqual);
+  const sidebar = useSelector(state => state.home.sidebar, shallowEqual);
 
-  // 获取state数据
-  const { article, sidebar } = props;
+  // useDispatch 代替 mapDispatch
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // 获取文章
-    getArticleDispatch(id);
-  }, [id, getArticleDispatch]);
+    dispatch(getArticleAction(id));
+  }, [id, dispatch]);
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
-      // 右侧边栏
-      getArticleRandCommentDispatch();
+      /// 右侧边栏
+      dispatch(getArticleRandCommentAction());
     }
     
-  }, [getArticleRandCommentDispatch, sidebar]);
+  }, [dispatch, sidebar]);
   
   return (
     <Main>
@@ -100,20 +99,4 @@ function Article(props) {
   );
 }
 
-const mapState = (state) => ({
-  article: state.article.article,
-  sidebar: state.home.sidebar
-});
-
-const mapDispatch = dispatch => {
-  return {
-    getArticleDispatch(data) {
-      dispatch(getArticleAction(data));
-    },
-    getArticleRandCommentDispatch() {
-      dispatch(getArticleRandCommentAction());
-    }
-  }
-};
-
-export default connect(mapState, mapDispatch)(React.memo(Article));
+export default React.memo(Article);
