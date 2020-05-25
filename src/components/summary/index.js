@@ -17,7 +17,7 @@ function Summary(props) {
     <DivListCover>
       <DivItem>
         <DivCoverMedia>
-          <DivCoverContent as="div">
+          <DivCoverContent as="div" image={React.$imgPath('default-cover.jpg')}>
             <div className="overlay"></div>
           </DivCoverContent>
         </DivCoverMedia>
@@ -34,7 +34,7 @@ function Summary(props) {
               </div>
             </DivAlientItem>
             <DivBoder>
-              <div className="text-sm h-2x">随着技术的发展，在欣赏或参与竞技体育项目的时候。</div>
+              <div className="text-sm h-2x">精彩即可开启</div>
               <div className="border-theme bg-primary"></div>
             </DivBoder>
           </DivListBody>

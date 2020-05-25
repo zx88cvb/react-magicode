@@ -44,7 +44,7 @@ export const DivCoverMedia = styled(DivMedia)`
 
 export const DivCoverContent = styled(MediaContent)`
   cursor: auto;
-  background-image: url(https://pandapro.demo.nicetheme.xyz/wp-content/themes/PandaPRO-1.0.4/images/default-cover.jpg);
+  background-image: url(${props => props.image});
 `;
 
 export const DivAlientItem = styled.div`
