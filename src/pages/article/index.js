@@ -1,4 +1,8 @@
-import React,{ useEffect } from 'react';
+import React,{
+  useState,
+  useEffect,
+  useCallback 
+} from 'react';
 import {
   useParams
 } from "react-router-dom";
@@ -12,7 +16,8 @@ import Post from 'components/post';
 import Comment from 'components/comment';
 
 import {
-  getArticleAction
+  getArticleAction,
+  getCommentAction
 } from './store/actionCreators';
 
 import {
@@ -43,17 +48,44 @@ function Article() {
   // 获取文章id
   const { id } = useParams();
 
+  // 分页 当前页
+  const [pageNum, setPageNum] = useState(1);
+
+  // 每页个数
+  const [pageSize, setPageSize] = useState(10);
+
+  // 每页个数
+  const [isRespond, setIsRespond] = useState(false);
+
   // useSelector 代替 mapState
   const article = useSelector(state => state.article.article, shallowEqual);
+  const comments = useSelector(state => state.article.comments, shallowEqual);
   const sidebar = useSelector(state => state.home.sidebar, shallowEqual);
 
   // useDispatch 代替 mapDispatch
   const dispatch = useDispatch();
 
+  /**
+   * 获取留言列表
+   */
+  const getComment = useCallback(() => {
+    const data = {
+      pageNum,
+      pageSize,
+      articleId: id
+    }
+    dispatch(getCommentAction(data));
+  }, [pageNum, pageSize, id, dispatch]);
+
   useEffect(() => {
     // 获取文章
     dispatch(getArticleAction(id));
   }, [id, dispatch]);
+
+  // 获取留言
+  useEffect(() => {
+    getComment();
+  }, [getComment])
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
@@ -81,8 +113,10 @@ function Article() {
           <Grid container spacing={3}>
             <Grid item lg={8}>
               <DivPaper className={useStyles.paper} elevation={0}>
-                <Post article={article}></Post>
-                <Comment></Comment>
+                <Post article={article} />
+                <Comment
+                  comments={comments}
+                  isRespond={isRespond} />
               </DivPaper>
             </Grid>
             <Hidden smDown>

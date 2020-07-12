@@ -11,3 +11,15 @@ export const getArticleSaga = (data) => ({
   type: constants.ARTICLE_ITEM_SUCCESS,
   data
 });
+
+// 获取留言列表
+export const getCommentAction = (data) => ({
+  type: constants.COMMENT_LIST,
+  data
+});
+
+// 获取留言列表 SUCCESS
+export const getCommentSaga = (data) => ({
+  type: constants.COMMENT_LIST_SUCCESS,
+  data
+});

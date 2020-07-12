@@ -73,38 +73,32 @@ function Category(props) {
   // useDispatch 代替 mapDispatch
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   setPageNum(1);
-  // }, [cid, tid])
   // 获取文章列表
-  const getArticleList = useCallback((pageNum, categoryId, tagId) => {
+  const getArticleList = useCallback((pageNum) => {
+    console.log(pageNum, pages);
     dispatch(
       getArticlePageAction({
         pageNum,
         pageSize,
         blogStatus,
-        categoryId,
-        tagId
+        categoryId: cid,
+        tagId: tid
       }
     ));
-  }, [pageSize, blogStatus, dispatch]);
+  }, [pageNum, pageSize, blogStatus, cid, tid, dispatch]);
+
+
+  // ④首次进入页面时，无任何筛选项。拉取数据，渲染页面。
+  // useEffect第二个参数为一个空数组，相当于在 componentDidMount 时执行该「副作用」
+  useEffect(() => {
+    setPageNum(1);
+  }, [location]);
+
 
   useEffect(() => {
-    console.log(location.pathname);
-    getArticleList(1, cid, tid);
-  }, [location, cid, tid, getArticleList])
+    getArticleList(pageNum);
 
-  useEffect(() => {
-
-    dispatch(
-      getArticlePageAction({
-        pageNum,
-        pageSize,
-        blogStatus
-      }
-    ));
-
-  }, [pageNum, pageSize, blogStatus, dispatch]);
+  }, [pageNum, getArticleList]);
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {

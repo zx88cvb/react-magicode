@@ -6,6 +6,9 @@ const defaultState = {
     blogCategoryVo: {},
     tagList: []
   },
+  comments: {
+    records: []
+  }
 };
 
 export default produce((draft, action) => {
@@ -15,6 +18,12 @@ export default produce((draft, action) => {
       return draft;
     case actionTypes.ARTICLE_ITEM_SUCCESS:
       draft.article = action.data.data;
+      return draft;
+    case actionTypes.COMMENT_LIST:
+      draft.page = action.data;
+      return draft;
+    case actionTypes.COMMENT_LIST_SUCCESS:
+      draft.comments = action.data.data;
       return draft;
     default:
       return draft;
