@@ -2,11 +2,13 @@ import React,
 { 
   useState,
   useEffect,
-  useMemo 
+  useMemo,
+  useCallback
 } from 'react';
 
 import {
-  useParams
+  useParams,
+  useLocation
 } from "react-router-dom";
 
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
@@ -61,6 +63,7 @@ function Category(props) {
     cid,
     tid
   } = useParams();
+  let location = useLocation();
 
   // useSelector 代替 mapState
   const articleList = useSelector(state => state.category.articleList, shallowEqual);
@@ -70,18 +73,38 @@ function Category(props) {
   // useDispatch 代替 mapDispatch
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   setPageNum(1);
+  // }, [cid, tid])
+  // 获取文章列表
+  const getArticleList = useCallback((pageNum, categoryId, tagId) => {
+    dispatch(
+      getArticlePageAction({
+        pageNum,
+        pageSize,
+        blogStatus,
+        categoryId,
+        tagId
+      }
+    ));
+  }, [pageSize, blogStatus, dispatch]);
+
+  useEffect(() => {
+    console.log(location.pathname);
+    getArticleList(1, cid, tid);
+  }, [location, cid, tid, getArticleList])
+
   useEffect(() => {
 
     dispatch(
       getArticlePageAction({
         pageNum,
         pageSize,
-        blogStatus,
-        categoryId: cid,
-        tagId: tid
+        blogStatus
       }
     ));
-  }, [pageNum, pageSize, blogStatus, cid, tid, dispatch]);
+
+  }, [pageNum, pageSize, blogStatus, dispatch]);
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
@@ -93,6 +116,8 @@ function Category(props) {
     }
     
   }, [dispatch, sidebar]);
+
+  
 
   const isMore = useMemo(() => pageNum === pages, [pageNum, pages]);
 

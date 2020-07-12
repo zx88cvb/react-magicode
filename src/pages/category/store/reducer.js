@@ -18,12 +18,18 @@ export default produce((draft, action) => {
       return draft;
     case actionTypes.ARTICLE_LIST_SUCCESS:
       // let arr = [...draft.articleList, ...action.data.data.records];
-      draft.articleList.push(...action.data.data.records);
+      // draft.articleList.push(...action.data.data.records);
+      if (action.data.data.current === 1) {
+        draft.articleList = action.data.data.records;
+      } else {
+        draft.articleList.push(...action.data.data.records);
+      }
+      
       draft.page.current = action.data.data.current;
       draft.page.size = action.data.data.size;
       draft.page.pages = action.data.data.pages;
       draft.page.total = action.data.data.total;
-      return;
+      return draft;
     default:
       return draft;
   }
