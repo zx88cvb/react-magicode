@@ -25,6 +25,11 @@ export const UlCommentList = styled.ul`
     margin-top: 3rem;
   }
 
+  .parent {
+    > ul {
+      margin: .5rem 0 1.5rem 3.875rem;
+    }
+  }
   .comment {
     position: relative;
 
@@ -113,7 +118,7 @@ export const UlCommentList = styled.ul`
 `;
 
 export const UlChildren = styled.ul`
-  margin: .5rem 0 1.5rem 3.875rem;
-  padding: 0 0 .5rem;
-  border-bottom: 1px solid #f2f2f5;
+  margin: .5rem 0 1.5rem 0;
+  /* padding: 0 0 .5rem; */
+  /* border-bottom: 1px solid #f2f2f5; */
 `;
