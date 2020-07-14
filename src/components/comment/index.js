@@ -2,8 +2,7 @@ import React, { useMemo } from 'react';
 
 import {
   DivTitle,
-  UlCommentList,
-  UlChildren
+  UlCommentList
 } from './style';
 
 import Respond from './respond/index'

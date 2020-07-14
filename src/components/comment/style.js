@@ -87,6 +87,13 @@ export const UlCommentList = styled.ul`
           font-size: 0.875rem;
 
           p {
+            span {
+              transition: all .3s ease;
+              cursor: pointer;
+              :hover {
+                color: ${style["font-color-light-hover"]};
+              }
+            }
             color: #393E46;
             margin: 0;
             white-space: normal;

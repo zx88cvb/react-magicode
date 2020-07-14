@@ -48,7 +48,7 @@ function TreeItem(props) {
               </div>
           </div>
         <div className="comment-content">
-          <p>@{parent.nickname}: {item.content}</p>
+          <p><span>@{parent.nickname} </span>{item.content}</p>
         </div>
           <div className="comment-footer flex-fill">
             <div>
