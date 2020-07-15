@@ -74,8 +74,7 @@ function Category(props) {
   const dispatch = useDispatch();
 
   // 获取文章列表
-  const getArticleList = useCallback((pageNum) => {
-    console.log(pageNum, pages);
+  const getArticleList = useCallback(() => {
     dispatch(
       getArticlePageAction({
         pageNum,
@@ -92,13 +91,13 @@ function Category(props) {
   // useEffect第二个参数为一个空数组，相当于在 componentDidMount 时执行该「副作用」
   useEffect(() => {
     setPageNum(1);
+    // return () => setPageNum(1);
   }, [location]);
 
 
   useEffect(() => {
-    getArticleList(pageNum);
-
-  }, [pageNum, getArticleList]);
+    getArticleList();
+  }, [pageNum, cid, tid, getArticleList]);
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {

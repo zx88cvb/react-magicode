@@ -1,4 +1,9 @@
-import React, { useMemo } from 'react';
+import React, 
+{ 
+  useState,
+  useMemo,
+  useCallback 
+} from 'react';
 
 import {
   DivTitle,
@@ -10,30 +15,40 @@ import TreeItem from './treeitem'
 
 function Comment(props) {
   const {
-    comments,
-    isRespond
+    comments
   } = props;
 
+  // 分页 当前页
+  const [replayKey, setReplayKey] = useState(0);
+
+
   // 是否显示回复
-  const replay = (isRespond) => {
-    return isRespond? (<Respond />): null;
+  const replay = (id) => {
+    return replayKey === id ? (<Respond />): null;
   };
 
   // 留言子组件
-  const childTree = (list, isRespond, parent) => {
+  const childTree = (list, parent) => {
     return (
       list.map(item => (
         <TreeItem
           key={item.id}
-          isRespond={isRespond}
           item={item}
-          parent={parent} />
+          parent={parent}
+          replay={replay}
+          handleReplayClick={handleReplayClick} />
       ))
     );
   }
 
+  // 点击回复
+  const handleReplayClick = (id) => {
+    setReplayKey(id);
+  };
+
+
   // 遍历留言list
-  const commentList = (list, isRespond) => {
+  const commentList = (list) => {
     return(
       list.map(item => (
         <UlCommentList key={item.id}>
@@ -60,14 +75,17 @@ function Comment(props) {
                     <time>{item.createTime}</time>
                   </div>
                   <div className="flex-fill"></div>
-                  <span className="comment-reply-link">
+                  <span className="comment-reply-link" onClick={() => handleReplayClick(item.id)}>
                     回复
                   </span>
                 </div>
               </div>
             </article>
             {
-              childTree(item.blogCommentList, isRespond, item)
+              replay(item.id)
+            }
+            {
+              childTree(item.blogCommentList, item)
             }
           </li>
         </UlCommentList>
@@ -86,11 +104,9 @@ function Comment(props) {
       </DivTitle>
       <div className="card">
         <div className="card-body">
+        <Respond />
           {
-            replay(!isRespond)
-          }
-          {
-            commentList(comments.records, isRespond)
+            commentList(comments.records)
           }
         </div>
       </div>

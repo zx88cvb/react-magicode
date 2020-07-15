@@ -54,8 +54,6 @@ function Article() {
   // 每页个数
   const [pageSize, setPageSize] = useState(10);
 
-  // 每页个数
-  const [isRespond, setIsRespond] = useState(false);
 
   // useSelector 代替 mapState
   const article = useSelector(state => state.article.article, shallowEqual);
@@ -115,8 +113,7 @@ function Article() {
               <DivPaper className={useStyles.paper} elevation={0}>
                 <Post article={article} />
                 <Comment
-                  comments={comments}
-                  isRespond={isRespond} />
+                  comments={comments} />
               </DivPaper>
             </Grid>
             <Hidden smDown>

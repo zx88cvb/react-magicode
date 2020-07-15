@@ -37,9 +37,9 @@ function Respond() {
       <form>
         <div className="comment-from-author">
           <div className="comment-avatar-author flex-fill">
-            <div className="flex-avatar">
+            {/* <div className="flex-avatar">
               <img src="https://pandapro.demo.nicetheme.xyz/wp-content/themes/PandaPRO-1.0.4/images/default-avatar.png" alt="img" />
-            </div>
+            </div> */}
           </div>
 
           <div className="comment-form-text">

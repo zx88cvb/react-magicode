@@ -1,35 +1,31 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import {
   UlChildren
 } from './style';
 
-import Respond from './respond/index'
-
 function TreeItem(props) {
   const {
     parent,
     item,
-    isRespond
+    replay,
+    handleReplayClick
   } = props;
 
-  // 是否显示回复
-  const replay = (isRespond) => {
-    return isRespond? (<Respond />): null;
-  };
-
   // 留言子组件
-  const childTree = (list, isRespond, parent) => {
+  const childTree = (list, parent) => {
     return (
       list.map(item => (
         <TreeItem
           key={item.id} 
-          isRespond={isRespond}
           item={item}
-          parent={parent} />
+          parent={parent}
+          replay={replay}
+          handleReplayClick={handleReplayClick} />
       ))
     );
   }
+
 
   return (
     <UlChildren>
@@ -55,17 +51,17 @@ function TreeItem(props) {
               <time>{item.createTime}</time>
             </div>
             <div className="flex-fill"></div>
-            <span className="comment-reply-link">
+            <span className="comment-reply-link" onClick={() => handleReplayClick(item.id)}>
               回复
             </span>
           </div>
         </div>
        </article>
       {
-        replay(isRespond)
+        replay(item.id)
       }
       {
-        childTree(item.blogCommentList, isRespond, item)
+        childTree(item.blogCommentList, item)
       }
       </li>
     </UlChildren>
