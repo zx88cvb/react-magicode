@@ -49,15 +49,6 @@ function Category(props) {
     },
   }));
 
-  // 分页 当前页
-  const [pageNum, setPageNum] = useState(1);
-
-  // 每页个数
-  const [pageSize, setPageSize] = useState(10);
-
-  // 博客状态
-  const [blogStatus, setBlogStatus] = useState(1);
-
   // 路由
   const {
     cid,
@@ -65,6 +56,16 @@ function Category(props) {
   } = useParams();
   let location = useLocation();
 
+  // 分页 当前页
+  const [articleState, setArticleState] = useState({pageNum: 1, categoryId: cid});
+
+  // 每页个数
+  const [pageSize, setPageSize] = useState(10);
+
+  // 博客状态
+  const [blogStatus, setBlogStatus] = useState(1);
+
+  
   // useSelector 代替 mapState
   const articleList = useSelector(state => state.category.articleList, shallowEqual);
   const sidebar = useSelector(state => state.home.sidebar, shallowEqual);
@@ -74,31 +75,29 @@ function Category(props) {
   const dispatch = useDispatch();
 
   // 获取文章列表
-  const getArticleList = useCallback((pageNum) => {
-    console.log(pageNum, pages);
-    dispatch(
-      getArticlePageAction({
-        pageNum,
-        pageSize,
-        blogStatus,
-        categoryId: cid,
-        tagId: tid
-      }
-    ));
-  }, [pageNum, pageSize, blogStatus, cid, tid, dispatch]);
+  // const getArticleList = useCallback(() => {
+    
+  // }, [pageNum, pageSize, blogStatus, cid, tid, dispatch]);
 
 
   // ④首次进入页面时，无任何筛选项。拉取数据，渲染页面。
   // useEffect第二个参数为一个空数组，相当于在 componentDidMount 时执行该「副作用」
   useEffect(() => {
-    setPageNum(1);
+    setArticleState({pageNum:1, categoryId: cid});
   }, [location]);
 
 
   useEffect(() => {
-    getArticleList(pageNum);
+    dispatch(
+      getArticlePageAction({
+        pageNum :articleState.pageNum,
+        pageSize,
+        blogStatus,
+        categoryId: articleState.categoryId
+      }
+    ));
 
-  }, [pageNum, getArticleList]);
+  }, [articleState, blogStatus, pageSize, dispatch]);
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
@@ -113,7 +112,7 @@ function Category(props) {
 
   
 
-  const isMore = useMemo(() => pageNum === pages, [pageNum, pages]);
+  const isMore = useMemo(() => articleState.pageNum === pages, [articleState.pageNum, pages]);
 
   // 加载更多
   const load = () => {
@@ -121,7 +120,7 @@ function Category(props) {
       <DivLoad>
         <button className="dposts-ajax-load"
           type="button"
-          onClick={() => setPageNum(pageNum + 1)}>加载更多</button>
+          onClick={() => setArticleState({pageNum: articleState.pageNum + 1, categoryId: cid})}>加载更多</button>
       </DivLoad>
     )
   }
