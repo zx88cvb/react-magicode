@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import style,
+import
 {
   DivMedia,
   PaperBase,

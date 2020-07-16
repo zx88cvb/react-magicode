@@ -1,5 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import {
+  setPageTitle
+} from 'pages/category/store/actionCreators';
 
 import {
   DivCard,
@@ -10,6 +15,14 @@ import {
 function SidebarTag(props) {
   const { tagList } = props;
 
+  // useDispatch 代替 mapDispatch
+  const dispatch = useDispatch();
+
+  // 菜单点击事件
+  const menuHandleClick = (title) => {
+    dispatch(setPageTitle(title));
+  }
+
   return (
     <DivCard>
       <DivCardHeader>
@@ -19,7 +32,8 @@ function SidebarTag(props) {
         {
           tagList.map(item => (
             <Link key={item.id}
-              to={`/tag/${item.id}`}>
+              to={`/tag/${item.id}`}
+              onClick={() => menuHandleClick(item.tagName)}>
               {item.tagName}
             </Link>
           ))

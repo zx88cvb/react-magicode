@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
 const BaseStyle = {

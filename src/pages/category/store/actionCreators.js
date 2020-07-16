@@ -11,3 +11,9 @@ export const getArticlePageSaga = (data) => ({
   type: constants.ARTICLE_LIST_SUCCESS,
   data
 });
+
+// 设置文章分类标题
+export const setPageTitle = (data) => ({
+  type: constants.SET_PAGE_TITLE,
+  data
+});

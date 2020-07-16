@@ -1,4 +1,4 @@
-import {call, put, select, takeEvery} from 'redux-saga/effects'
+import {put, select, takeEvery} from 'redux-saga/effects'
 import * as constants from './constants';
 import { 
   getArticlePageSaga,

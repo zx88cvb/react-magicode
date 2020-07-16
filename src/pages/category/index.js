@@ -2,8 +2,7 @@ import React,
 { 
   useState,
   useEffect,
-  useMemo,
-  useCallback
+  useMemo
 } from 'react';
 
 import {
@@ -56,20 +55,24 @@ function Category(props) {
   } = useParams();
   let location = useLocation();
 
-  // 分页 当前页
-  const [articleState, setArticleState] = useState({pageNum: 1, categoryId: cid});
-
-  // 每页个数
-  const [pageSize, setPageSize] = useState(10);
-
-  // 博客状态
-  const [blogStatus, setBlogStatus] = useState(1);
+  // 初始化
+  const initPage = {
+    pageNum: 1,
+    pageSize: 10,
+    blogStatus: 1,
+    categoryId: cid,
+    tagId: tid,
+  }
+  // 分页条件
+  const [articleState, setArticleState] = useState(initPage);
 
   
   // useSelector 代替 mapState
   const articleList = useSelector(state => state.category.articleList, shallowEqual);
-  const sidebar = useSelector(state => state.home.sidebar, shallowEqual);
   const {pages, total} = useSelector(state => state.category.page, shallowEqual);
+  const title = useSelector(state => state.category.title, shallowEqual);
+  const sidebar = useSelector(state => state.home.sidebar, shallowEqual);
+  
 
   // useDispatch 代替 mapDispatch
   const dispatch = useDispatch();
@@ -83,21 +86,26 @@ function Category(props) {
   // ④首次进入页面时，无任何筛选项。拉取数据，渲染页面。
   // useEffect第二个参数为一个空数组，相当于在 componentDidMount 时执行该「副作用」
   useEffect(() => {
-    setArticleState({pageNum:1, categoryId: cid});
+    initPage.pageNum = 1;
+    initPage.categoryId = cid;
+    initPage.tagId = tid;
+
+    setArticleState(initPage);
   }, [location]);
 
 
   useEffect(() => {
     dispatch(
       getArticlePageAction({
-        pageNum :articleState.pageNum,
-        pageSize,
-        blogStatus,
-        categoryId: articleState.categoryId
+        pageNum: articleState.pageNum,
+        pageSize: articleState.pageSize,
+        blogStatus: articleState.blogStatus,
+        categoryId: articleState.categoryId,
+        tagId: articleState.tagId
       }
     ));
 
-  }, [articleState, blogStatus, pageSize, dispatch]);
+  }, [articleState, dispatch]);
 
   useEffect(() => {
     if (sidebar.tagList.length === 0 || sidebar.commentNews.length === 0 || sidebar.randNews.length === 0) {
@@ -110,6 +118,14 @@ function Category(props) {
     
   }, [dispatch, sidebar]);
 
+  const nextPage = () => {
+    initPage.pageNum++;
+    initPage.categoryId = cid;
+    initPage.tagId = tid;
+
+    setArticleState(initPage);
+  }
+
   
 
   const isMore = useMemo(() => articleState.pageNum === pages, [articleState.pageNum, pages]);
@@ -120,7 +136,7 @@ function Category(props) {
       <DivLoad>
         <button className="dposts-ajax-load"
           type="button"
-          onClick={() => setArticleState({pageNum: articleState.pageNum + 1, categoryId: cid})}>加载更多</button>
+          onClick={() => nextPage()}>加载更多</button>
       </DivLoad>
     )
   }
@@ -133,13 +149,13 @@ function Category(props) {
             <AHome to="/">我的主页</AHome>
           </span>
           <span className="sep">›</span>
-          <span>科技</span>
+          <span>{title}</span>
         </DivBreadcrumbs>
         <div className={useStyles.root}>
           <Grid container spacing={3}>
             <Grid item lg={8}>
               <DivPaper className={useStyles.paper} elevation={0}>
-                <Summary total={total}/>
+                <Summary title={title} total={total}/>
                 <List list={articleList} />
                 {
                   load()

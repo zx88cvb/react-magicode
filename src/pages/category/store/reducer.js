@@ -8,7 +8,8 @@ const defaultState = {
     pages: 0,
     total: 0
   },
-  articleList: []
+  articleList: [],
+  title: null
 };
 
 export default produce((draft, action) => {
@@ -29,6 +30,9 @@ export default produce((draft, action) => {
       draft.page.size = action.data.data.size;
       draft.page.pages = action.data.data.pages;
       draft.page.total = action.data.data.total;
+      return draft;
+    case actionTypes.SET_PAGE_TITLE:
+      draft.title = action.data;
       return draft;
     default:
       return draft;

@@ -11,7 +11,7 @@ import {
 } from './style';
 
 function Summary(props) {
-  const { total } = props;
+  const { title, total } = props;
 
   return (
     <DivListCover>
@@ -24,7 +24,7 @@ function Summary(props) {
         <DivListContent className="list-content p-3 p-md-4">
           <DivListBody>
             <DivAlientItem>
-              <div className="text-xl">科技</div>
+              <div className="text-xl">{title}</div>
               <div className="flex-fill"></div>
               <div className="text-light">
                 <svg className="icon" aria-hidden="true">

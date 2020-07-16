@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import style,
 {
-  AElement,
   MainElement,
   PaperBase
 } from '../../assets/style/global-style';

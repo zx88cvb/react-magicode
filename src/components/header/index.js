@@ -8,6 +8,10 @@ import {
 } from './store/actionCreators';
 
 import {
+  setPageTitle
+} from 'pages/category/store/actionCreators';
+
+import {
   HeaderStyle,
   Navbar,
   DivContainer,
@@ -38,11 +42,18 @@ function Header() {
     dispatch(getHeaderAction());
   }, [dispatch]);
 
+  // 菜单点击事件
+  const menuHandleClick = (title) => {
+    dispatch(setPageTitle(title));
+  }
+
   // 遍历文章list
   const articleList = (list) => {
     return (
       list.map(item => (
-        <LiMenuItem key={item.id}>
+        <LiMenuItem
+          key={item.id}
+          onClick={() => menuHandleClick(item.adGroupContextVo.title)}>
           <Link to={item.adGroupContextVo.linkUrl}
            alt={item.adGroupContextVo.remake}>
              {item.adGroupContextVo.title}
