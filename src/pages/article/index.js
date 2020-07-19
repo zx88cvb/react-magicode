@@ -113,7 +113,8 @@ function Article() {
               <DivPaper className={useStyles.paper} elevation={0}>
                 <Post article={article} />
                 <Comment
-                  comments={comments} />
+                  comments={comments}
+                  articleId={id} />
               </DivPaper>
             </Grid>
             <Hidden smDown>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -29,8 +29,28 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Respond() {
+function Respond(props) {
+  // 样式
   const classes = useStyles();
+
+  const { articleId } = props;
+
+  const initData = {
+    articleId: articleId,
+    pId: 0,
+    nickname: null,
+    email: null,
+    website: null,
+    content: null
+  }
+
+  // 提交留言表单数据
+  const [respondForm, setRespondForm] = useState(initData);
+
+  const clickSubmit = () => {
+    console.log();
+    setRespondForm(initData);
+  }
 
   return (
     <DivRespond className="comment-respond" validate autoComplete="off">
@@ -47,13 +67,14 @@ function Respond() {
               {/* <textarea name="comment" className="form-control" rows="4"></textarea> */}
               <TextField
               id="outlined-multiline-static"
-              name="comment"
+              name="content"
               required
               label="说点什么吧.."
               multiline
               rows="4"
               fullWidth={true}
               variant="outlined"
+              value={respondForm.content}
               />
             </div>
             <div>
@@ -64,11 +85,13 @@ function Respond() {
                       <TextField
                         label="昵称"
                         id="outlined-margin-dense"
+                        name="nickname"
                         required
                         className={classes.textField}
                         helperText="取一个好听的昵称吧"
                         margin="dense"
                         variant="outlined"
+                        value={respondForm.nickname}
                       />
                     </PaperBase>
                   </Grid>
@@ -77,10 +100,12 @@ function Respond() {
                       <TextField
                         label="邮箱"
                         id="outlined-margin-dense"
+                        name="email"
                         className={classes.textField}
                         helperText="邮箱将会完全保密"
                         margin="dense"
                         variant="outlined"
+                        value={respondForm.email}
                       />
                     </PaperBase>
                   </Grid>
@@ -89,39 +114,16 @@ function Respond() {
                       <TextField
                         label="网站地址"
                         id="outlined-margin-dense"
+                        name="website"
                         className={classes.textField}
                         helperText="介绍一下您的个人网站"
                         margin="dense"
                         variant="outlined"
+                        value={respondForm.website}
                       />
                     </PaperBase>
                   </Grid>
                 </Grid>
-                {/* <TextField
-                  label="昵称"
-                  id="outlined-margin-dense"
-                  required
-                  className={classes.textField}
-                  helperText="取一个好听的昵称吧"
-                  margin="dense"
-                  variant="outlined"
-                />
-                <TextField
-                  label="邮箱"
-                  id="outlined-margin-dense"
-                  className={classes.textField}
-                  helperText="邮箱将会完全保密"
-                  margin="dense"
-                  variant="outlined"
-                />
-                <TextField
-                  label="网站地址"
-                  id="outlined-margin-dense"
-                  className={classes.textField}
-                  helperText="介绍一下您的个人网站"
-                  margin="dense"
-                  variant="outlined"
-                /> */}
               </div>
               <div className="d-flex flex-fill">
                 <div className="flex-fill"></div>
@@ -129,6 +131,7 @@ function Respond() {
                   variant="contained"
                   color="primary"
                   className={classes.button}
+                  onClick={() => clickSubmit()}
                 >
                   发送评论
                 </ButtonComment>

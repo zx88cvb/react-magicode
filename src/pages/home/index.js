@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 // import { renderRoutes } from "react-router-config";
-import { makeStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
+
+import { Row, Col } from 'antd';
+
 import Swiper from 'components/swiper';
 import List from 'components/list'
 import Sidebar from 'components/sidebar'
@@ -13,7 +12,6 @@ import {
   Main,
   DivListNav,
   ButtonNav,
-  DivPaper,
   DivLoad
 } from './style';
 
@@ -43,18 +41,6 @@ function Home(props) {
 
   // useDispatch 代替 mapDispatch
   const dispatch = useDispatch();
-
-  // material-ui
-  const useStyles = makeStyles(theme => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }));
 
   // swiper
   const settings = {
@@ -120,36 +106,31 @@ function Home(props) {
       </DivBanner>
       <Main>
         <div className="container">
-          {/* <div className="row"> */}
-            <div className={useStyles.root}>
-              <Grid container spacing={3}>
-                <Grid item lg={8}>
-                  <DivPaper className={useStyles.paper} elevation={0}>
-                    <DivListNav>
-                      <ul>
-                        <li>
-                          <ButtonNav className="current">推荐</ButtonNav>
-                        </li>
-                        <li>
-                          <ButtonNav>新闻</ButtonNav>
-                        </li>
-                      </ul>
-                    </DivListNav>
-                    <List list={articleList} />
-                    {
-                      load() 
-                    }
-                  </DivPaper>
-                </Grid>
-                <Hidden smDown>
-                  <Grid item lg={4}>
-                    <DivPaper className={useStyles.paper} elevation={0}>
-                      <Sidebar sidebar={sidebar} />
-                    </DivPaper>
-                  </Grid>
-                </Hidden>
-              </Grid>
-            </div>
+          <Row gutter={[16, 0]}>
+            <Col lg={16}>
+              <div>
+                <DivListNav>
+                  <ul>
+                    <li>
+                      <ButtonNav className="current">推荐</ButtonNav>
+                    </li>
+                    <li>
+                      <ButtonNav>新闻</ButtonNav>
+                    </li>
+                  </ul>
+                </DivListNav>
+                <List list={articleList} />
+                {
+                  load() 
+                }
+              </div>
+            </Col>
+            <Col lg={8} sm={0}>
+              <div>
+                <Sidebar sidebar={sidebar} />
+              </div>
+            </Col>
+          </Row>
           {/* </div> */}
         </div>
       </Main>

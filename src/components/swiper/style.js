@@ -2,12 +2,20 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import style,
 {
-  AElement,
-  PaperBase
+  AElement
 } from '../../assets/style/global-style';
 
 // material-ui
-export const DivPaper = styled(PaperBase)`
+// export const DivPaper = styled(PaperBase)`
+//   padding-right: 0;
+//   padding-left: 0;
+// `;
+
+export const DivTest = {
+  background: '#ff0000'
+}
+
+export const DivPaper = styled.div`
   padding-right: 0;
   padding-left: 0;
 `;
