@@ -7,7 +7,10 @@ import style,
   PaperBase
 } from '../../assets/style/global-style';
 
-export const DivPaper = styled(PaperBase)`
+// export const DivPaper = styled(PaperBase)`
+//   padding: 0 0 0 1rem;
+// `;
+export const DivPaper = styled.div`
   padding: 0 0 0 1rem;
 `;
 

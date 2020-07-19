@@ -11,9 +11,9 @@ import {
 } from "react-router-dom";
 
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
+
+import { Row, Col } from 'antd';
+
 import List from 'components/list';
 import Sidebar from 'components/sidebar';
 import Summary from 'components/summary';
@@ -35,19 +35,6 @@ import {
 } from './style';
 
 function Category(props) {
-
-  // material-ui
-  const useStyles = makeStyles(theme => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }));
-
   // 路由
   const {
     cid,
@@ -151,31 +138,22 @@ function Category(props) {
           <span className="sep">›</span>
           <span>{title}</span>
         </DivBreadcrumbs>
-        <div className={useStyles.root}>
-          <Grid container spacing={3}>
-            <Grid item lg={8}>
-              <DivPaper className={useStyles.paper} elevation={0}>
-                <Summary title={title} total={total}/>
-                <List list={articleList} />
-                {
-                  load()
-                }
-                {/* <DivLoad>
-                  <button className="dposts-ajax-load"
-                    type="button"
-                    onClick={() => setPageNum(pageNum + 1)}>加载更多</button>
-                </DivLoad> */}
-              </DivPaper>
-            </Grid>
-            <Hidden smDown>
-              <Grid item lg={4}>
-                <DivPaper className={useStyles.paper} elevation={0}>
-                  <Sidebar sidebar={sidebar} />
-                </DivPaper>
-              </Grid>
-            </Hidden>
-          </Grid>
-        </div>
+        <Row gutter={[16, 0]}>
+          <Col lg={16}>
+            <div>
+              <Summary title={title} total={total}/>
+              <List list={articleList} />
+              {
+                load()
+              }
+            </div>
+          </Col>
+          <Col lg={8} sm={0}>
+            <div>
+              <Sidebar sidebar={sidebar} />
+            </div>
+          </Col>
+        </Row>
       </div>
     </Main>
   );

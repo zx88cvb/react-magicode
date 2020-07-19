@@ -1,7 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
+
+import { Row, Col } from 'antd';
 
 import {
   DivListItem,
@@ -20,18 +19,6 @@ import {
 } from './style';
 
 function List(props) {
-  // material-ui
-  const useStyles = makeStyles(theme => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }));
-
   const {
     list
   } = props;
@@ -46,8 +33,8 @@ function List(props) {
   const articleList = (list) => {
     return (
       list.map(item => (
-        <DivListItem className={useStyles.root} key={item.id}>
-          <Grid container spacing={2}>
+        <DivListItem key={item.id}>
+          {/* <Grid container spacing={2}>
             <Grid item xs={4} md={4}>
               <DivPaper className={useStyles.paper} elevation={0}>
                 <DivMedia>
@@ -88,8 +75,47 @@ function List(props) {
                 </DivListFooter>
               </DivPaper>
             </Grid>
-            {/* <DivListContent></DivListContent> */}
-          </Grid>
+          </Grid> */}
+          <Row gutter={[16, 0]}>
+            <Col xs={8} md={8}>
+              <DivPaper>
+                <DivMedia>
+                  <AMediaConent to={`/article/${item.id}`} title={item.title} image={React.$imgPath(item.thumbnail)}/>
+                </DivMedia>
+              </DivPaper>
+            </Col>
+            <Col xs={16} md={16}>
+              <DivPaper>
+                <DivListBody>
+                  <AListBody to={`/article/${item.id}`}>{item.title}</AListBody>
+                    <DivListDesc>
+                      <p>{item.excerpt}</p>
+                    </DivListDesc>
+                </DivListBody>
+                <DivListFooter>
+                  <DivItemCenter>
+                    <DivInlineBlock>
+                      <AUserName>{item.author}</AUserName>
+                    </DivInlineBlock>
+                    <DivIB2>
+                      <svg className="icon" aria-hidden="true">
+                        <use xlinkHref="#icon-line"></use>
+                      </svg>
+                    </DivIB2>
+                    <DivInlineBlock>
+                      {
+                        category(item)
+                      }
+                    </DivInlineBlock>
+                    <div className="flex-fill"></div>
+                    <DivTime>
+                      <time>{item.createTime}</time>
+                    </DivTime>
+                  </DivItemCenter>
+                </DivListFooter>
+              </DivPaper>
+            </Col>
+          </Row>
         </DivListItem>
       ))
     );

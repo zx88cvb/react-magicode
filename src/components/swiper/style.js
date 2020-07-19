@@ -12,7 +12,7 @@ import style,
 // `;
 
 export const DivTest = {
-  background: '#ff0000'
+  background: '#222831'
 }
 
 export const DivPaper = styled.div`
