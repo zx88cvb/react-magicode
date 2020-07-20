@@ -13,7 +13,8 @@ import TreeItem from './treeitem'
 
 function Comment(props) {
   const {
-    comments
+    comments,
+    articleId
   } = props;
 
   // 分页 当前页
@@ -22,7 +23,7 @@ function Comment(props) {
 
   // 是否显示回复
   const replay = (id) => {
-    return replayKey === id ? (<Respond />): null;
+    return replayKey === id ? (<Respond articleId={articleId} />): null;
   };
 
   // 留言子组件
@@ -102,7 +103,7 @@ function Comment(props) {
       </DivTitle>
       <div className="card">
         <div className="card-body">
-        <Respond />
+        <Respond articleId={articleId} />
           {
             commentList(comments.records)
           }
