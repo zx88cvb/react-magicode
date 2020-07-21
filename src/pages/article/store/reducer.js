@@ -25,6 +25,12 @@ export default produce((draft, action) => {
     case actionTypes.COMMENT_LIST_SUCCESS:
       draft.comments = action.data.data;
       return draft;
+    case actionTypes.COMMENT_ADD:
+      draft.commentForm = action.data;
+      return draft;
+    case actionTypes.COMMENT_ADD_SUCCESS:
+      draft.commentForm = action.data.data;
+      return draft;
     default:
       return draft;
   }

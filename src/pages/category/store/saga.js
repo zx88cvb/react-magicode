@@ -18,15 +18,9 @@ function* getArticleList() {
     // const res = yield call(axios.get, "/api/blogapi/blog/article/recent",params);
     const res = yield getBlogArticlePage(params);
     if (ERR_OK === res.code) {
-      yield put(getArticlePageSaga({
-        type: constants.ARTICLE_LIST_SUCCESS,
-        data: res.data
-      }));
+      yield put(getArticlePageSaga(res.data));
     } else {
-      yield put({
-        type: constants.SET_MESSAGE,
-        msg: res.message
-      })
+      yield put(res.message)
     }
     // yield put(action);
   } catch(e) {

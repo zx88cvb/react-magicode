@@ -1,7 +1,8 @@
 import React,{
   useState,
   useEffect,
-  useCallback 
+  useCallback,
+  useMemo
 } from 'react';
 import {
   useParams
@@ -17,7 +18,8 @@ import Comment from 'components/comment';
 
 import {
   getArticleAction,
-  getCommentAction
+  getCommentAction,
+  addCommentAction
 } from './store/actionCreators';
 
 import {
@@ -74,6 +76,13 @@ function Article() {
     }
     dispatch(getCommentAction(data));
   }, [pageNum, pageSize, id, dispatch]);
+
+  /**
+   * 发布留言
+   */
+  const addComment = useMemo((data) => {
+    dispatch(addCommentAction(data));
+  }, [dispatch]);
 
   useEffect(() => {
     // 获取文章

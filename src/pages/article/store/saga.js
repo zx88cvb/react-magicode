@@ -3,7 +3,8 @@ import * as constants from './constants';
 
 import { 
   getArticleSaga,
-  getCommentSaga
+  getCommentSaga,
+  addCommentSaga
 } from './actionCreators';
 
 import { ERR_OK } from 'api/constants';
@@ -13,7 +14,8 @@ import {
 } from 'api/blog/article';
 
 import {
-  recent
+  recent,
+  insertBlogComment
 } from 'api/blog/comment';
 
 /**
@@ -26,15 +28,9 @@ function* getArticle() {
     // const res = yield call(axios.get, "/api/blogapi/blog/article/recent",params);
     const res = yield getBlogArticleById(id);
     if (ERR_OK === res.code) {
-      yield put(getArticleSaga({
-        type: constants.ARTICLE_ITEM_SUCCESS,
-        data: res.data
-      }));
+      yield put(getArticleSaga(res.data));
     } else {
-      yield put({
-        type: constants.SET_MESSAGE,
-        msg: res.message
-      })
+      yield put(res.message)
     }
     // yield put(action);
   } catch(e) {
@@ -55,17 +51,33 @@ function* getComments() {
     // const res = yield call(axios.get, "/api/blogapi/blog/article/recent",params);
     const res = yield recent(page);
     if (ERR_OK === res.code) {
-      yield put(getCommentSaga({
-        type: constants.COMMENT_LIST_SUCCESS,
-        data: res.data
-      }));
+      yield put(getCommentSaga(res.data));
     } else {
-      yield put({
-        type: constants.SET_MESSAGE,
-        msg: res.message
-      })
+      yield put(res.message)
     }
     // yield put(action);
+  } catch(e) {
+    yield put({
+      type: constants.SET_MESSAGE,
+      msg: e
+    })
+  }
+}
+
+/**
+ * 添加留言
+ */
+function* addComment() {
+  try {
+    const form = yield select(state => state.article.commentForm);
+
+    const res = yield insertBlogComment(form);
+
+    if (ERR_OK === res.code) {
+      yield put(addCommentSaga(res.message));
+    } else {
+      yield put(res.message)
+    }
   } catch(e) {
     yield put({
       type: constants.SET_MESSAGE,
@@ -77,4 +89,5 @@ function* getComments() {
 export default function* articleSaga() {
   yield takeEvery(constants.ARTICLE_ITEM, getArticle);
   yield takeEvery(constants.COMMENT_LIST, getComments);
+  yield takeEvery(constants.COMMENT_ADD, addComment);
 }

@@ -48,13 +48,15 @@ function Respond(props) {
   const [respondForm, setRespondForm] = useState(initData);
 
   const clickSubmit = () => {
-    console.log("respondForm: ", respondForm);
+    console.log(respondForm);
+
+    // 提交完成后重置
     setRespondForm(initData);
   }
 
   const handleInputChange = event => {
-    const { content, nickname } = event.target;
-		console.log(content, nickname);
+    const { name, value } = event.target;
+    setRespondForm({...respondForm, [name]: value});
 	}
 
   return (

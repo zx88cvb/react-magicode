@@ -23,3 +23,15 @@ export const getCommentSaga = (data) => ({
   type: constants.COMMENT_LIST_SUCCESS,
   data
 });
+
+// 提交留言
+export const addCommentAction = (data) => ({
+  type: constants.COMMENT_ADD,
+  data
+});
+
+// 提交留言 SUCCESS
+export const addCommentSaga = (data) => ({
+  type: constants.COMMENT_ADD_SUCCESS,
+  data
+});

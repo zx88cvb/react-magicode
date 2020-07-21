@@ -25,10 +25,7 @@ function* getArticleList() {
     // const res = yield call(axios.get, "/api/blogapi/blog/article/recent",params);
     const res = yield getBlogArticlePage(params);
     if (ERR_OK === res.code) {
-      yield put(getArticlePageSaga({
-        type: constants.ARTICLE_LIST_SUCCESS,
-        data: res.data
-      }));
+      yield put(getArticlePageSaga(res.data));
     } else {
       yield put({
         type: constants.SET_MESSAGE,
@@ -51,10 +48,7 @@ function* getSwiper() {
   try {
     const res = yield getAdIndex();
     if (ERR_OK === res.code) {
-      yield put(getSwiperSaga({
-        type: constants.SWIPER_LIST_SUCCESS,
-        data: res.data
-      }));
+      yield put(getSwiperSaga(res.data));
     } else {
       yield put({
         type: constants.SET_MESSAGE,
@@ -75,10 +69,7 @@ function* getArticleRandComment() {
 
     const res = yield selectNewsRandThreeComment();
     if (ERR_OK === res.code) {
-      yield put(getArticleRandCommentSuccessAction({
-        type: constants.ARTICLE_RAND_COMMENT_LIST_SUCCESS,
-        data: res.data
-      }));
+      yield put(getArticleRandCommentSuccessAction(res.data));
     } else {
       yield put({
         type: constants.SET_MESSAGE,
