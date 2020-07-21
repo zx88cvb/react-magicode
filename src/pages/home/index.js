@@ -23,7 +23,7 @@ import {
   getArticleRandCommentAction
 } from './store/actionCreators';
 
-function Home(props) {
+function Home() {
   
 
   // 分页 当前页

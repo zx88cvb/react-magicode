@@ -34,7 +34,7 @@ import {
   DivLoad
 } from './style';
 
-function Category(props) {
+function Category() {
 
   // material-ui
   const useStyles = makeStyles(theme => ({

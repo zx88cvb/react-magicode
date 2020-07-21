@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
@@ -103,5 +104,10 @@ function List(props) {
     </div>
   );
 }
+
+// propTypes 传入参数校验
+List.propTypes = {
+  list: PropTypes.array
+};
 
 export default React.memo(List);

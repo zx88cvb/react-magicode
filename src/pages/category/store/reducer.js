@@ -20,16 +20,16 @@ export default produce((draft, action) => {
     case actionTypes.ARTICLE_LIST_SUCCESS:
       // let arr = [...draft.articleList, ...action.data.data.records];
       // draft.articleList.push(...action.data.data.records);
-      if (action.data.data.current === 1) {
-        draft.articleList = action.data.data.records;
+      if (action.data.current === 1) {
+        draft.articleList = action.data.records;
       } else {
-        draft.articleList.push(...action.data.data.records);
+        draft.articleList.push(...action.data.records);
       }
       
-      draft.page.current = action.data.data.current;
-      draft.page.size = action.data.data.size;
-      draft.page.pages = action.data.data.pages;
-      draft.page.total = action.data.data.total;
+      draft.page.current = action.data.current;
+      draft.page.size = action.data.size;
+      draft.page.pages = action.data.pages;
+      draft.page.total = action.data.total;
       return draft;
     case actionTypes.SET_PAGE_TITLE:
       draft.title = action.data;
