@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
+import PropTypes from 'prop-types';
+
 import {
   DivRespond,
   ButtonComment,
@@ -34,11 +36,11 @@ function Respond(props) {
   // 样式
   const classes = useStyles();
 
-  const { articleId } = props;
+  const { articleId, pId } = props;
 
   const initData = {
     articleId: articleId,
-    pId: 0,
+    pId: pId,
     nickname: '',
     email: '',
     website: '',
@@ -46,13 +48,14 @@ function Respond(props) {
   }
 
   // 提交留言表单数据
-  const [respondForm, setRespondForm] = useState(initData);
+  // const [respondForm, setRespondForm] = useState(initData);
 
   // 表单验证
-  const { register, handleSubmit, reset, errors, setError } = useForm();
+  const { register, handleSubmit, reset, errors } = useForm({defaultValues: initData});
 
   const onSubmit = data => {
-    console.log(data);
+    console.log({...initData, ...data})
+    reset();
   };
 
   // const handleInputChange = event => {
@@ -173,5 +176,17 @@ function Respond(props) {
     </DivRespond>
   );
 }
+
+// 指定 props 的默认值：
+Respond.defaultProps = {
+  articleId: 0,
+  pId: 0
+};
+
+// propTypes 传入参数校验
+Respond.propTypes = {
+  articleId: PropTypes.number,
+  pId: PropTypes.number
+};
 
 export default React.memo(Respond);

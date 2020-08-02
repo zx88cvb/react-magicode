@@ -23,7 +23,7 @@ function Comment(props) {
 
   // 是否显示回复
   const replay = (id) => {
-    return replayKey === id ? (<Respond articleId={articleId} />): null;
+    return replayKey === id ? (<Respond articleId={articleId} pId={id} />): null;
   };
 
   // 留言子组件
