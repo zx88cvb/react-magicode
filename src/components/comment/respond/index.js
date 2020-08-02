@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm } from "react-hook-form";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -47,21 +48,21 @@ function Respond(props) {
   // 提交留言表单数据
   const [respondForm, setRespondForm] = useState(initData);
 
-  const clickSubmit = () => {
-    console.log(respondForm);
+  // 表单验证
+  const { register, handleSubmit, reset, errors, setError } = useForm();
 
-    // 提交完成后重置
-    setRespondForm(initData);
-  }
+  const onSubmit = data => {
+    console.log(data);
+  };
 
-  const handleInputChange = event => {
-    const { name, value } = event.target;
-    setRespondForm({...respondForm, [name]: value});
-	}
+  // const handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   setRespondForm({...respondForm, [name]: value});
+	// }
 
   return (
     <DivRespond className="comment-respond" validate autoComplete="off">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="comment-from-author">
           <div className="comment-avatar-author flex-fill">
             {/* <div className="flex-avatar">
@@ -73,16 +74,25 @@ function Respond(props) {
             <div className="comment-textarea">
               {/* <textarea name="comment" className="form-control" rows="4"></textarea> */}
               <TextField
-              id="outlined-multiline-static"
-              name="content"
-              required
-              label="说点什么吧.."
-              multiline
-              rows="4"
-              fullWidth={true}
-              variant="outlined"
-              onChange={handleInputChange}>
-                {respondForm.content}
+                id="outlined-multiline-static"
+                name="content"
+                label="说点什么吧.."
+                multiline
+                rows="4"
+                fullWidth={true}
+                variant="outlined"
+                error={errors?.content? true: false}
+                inputRef={register({
+                  required: '说点什么吧~',
+                  maxLength: {
+                    value: 300,
+                    message: '字数长度需小于300'
+                  } 
+                })}
+                helperText={errors?.content ? errors.content.message: '说点什么吧'}
+                // onChange={handleInputChange}
+              >
+                {/* {respondForm.content} */}
               </TextField>
             </div>
             <div>
@@ -94,13 +104,20 @@ function Respond(props) {
                         label="昵称"
                         id="outlined-margin-dense"
                         name="nickname"
-                        required
+                        // required
                         className={classes.textField}
-                        helperText="取一个好听的昵称吧"
+                        helperText={errors?.nickname? errors.nickname.message: '取一个好听的昵称吧'}
                         margin="dense"
                         variant="outlined"
-                        value={respondForm.nickname}
-                        onChange={handleInputChange}
+                        // value={respondForm.nickname}
+                        inputRef={register({
+                          required: '昵称不能为空',
+                          maxLength: {
+                            value: 20,
+                            message: '昵称长度最大不能超过20字数'
+                          } 
+                        })}
+                        error={errors?.nickname? true: false}
                       />
                     </PaperBase>
                   </Grid>
@@ -114,8 +131,9 @@ function Respond(props) {
                         helperText="邮箱将会完全保密"
                         margin="dense"
                         variant="outlined"
-                        value={respondForm.email}
-                        onChange={handleInputChange}
+                        // value={respondForm.email}
+                        inputRef={register}
+                        // onChange={handleInputChange}
                       />
                     </PaperBase>
                   </Grid>
@@ -129,8 +147,9 @@ function Respond(props) {
                         helperText="介绍一下您的个人网站"
                         margin="dense"
                         variant="outlined"
-                        value={respondForm.website}
-                        onChange={handleInputChange}
+                        // value={respondForm.website}
+                        inputRef={register}
+                        // onChange={handleInputChange}
                       />
                     </PaperBase>
                   </Grid>
@@ -139,10 +158,10 @@ function Respond(props) {
               <div className="d-flex flex-fill">
                 <div className="flex-fill"></div>
                 <ButtonComment
+                  type="submit"
                   variant="contained"
                   color="primary"
                   className={classes.button}
-                  onClick={() => clickSubmit()}
                 >
                   发送评论
                 </ButtonComment>
