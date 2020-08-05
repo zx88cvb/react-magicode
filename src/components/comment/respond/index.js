@@ -36,7 +36,11 @@ function Respond(props) {
   // 样式
   const classes = useStyles();
 
-  const { articleId, pId } = props;
+  const { 
+    articleId,
+    pId,
+    addComment
+   } = props;
 
   const initData = {
     articleId: articleId,
@@ -53,8 +57,10 @@ function Respond(props) {
   // 表单验证
   const { register, handleSubmit, reset, errors } = useForm({defaultValues: initData});
 
+  // 提交表单
   const onSubmit = data => {
     console.log({...initData, ...data})
+    addComment({...initData, ...data});
     reset();
   };
 
@@ -185,8 +191,9 @@ Respond.defaultProps = {
 
 // propTypes 传入参数校验
 Respond.propTypes = {
-  articleId: PropTypes.number,
-  pId: PropTypes.number
+  articleId: PropTypes.string,
+  pId: PropTypes.number,
+  addComment: PropTypes.func
 };
 
 export default React.memo(Respond);

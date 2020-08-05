@@ -8,7 +8,8 @@ const defaultState = {
   },
   comments: {
     records: []
-  }
+  },
+  message: null
 };
 
 export default produce((draft, action) => {
@@ -29,7 +30,7 @@ export default produce((draft, action) => {
       draft.commentForm = action.data;
       return draft;
     case actionTypes.COMMENT_ADD_SUCCESS:
-      draft.commentForm = action.data;
+      draft.message = action.data.message;
       return draft;
     default:
       return draft;

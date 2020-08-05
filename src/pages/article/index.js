@@ -1,8 +1,7 @@
 import React,{
   useState,
   useEffect,
-  useCallback,
-  useMemo
+  useCallback
 } from 'react';
 import {
   useParams
@@ -80,7 +79,7 @@ function Article() {
   /**
    * 发布留言
    */
-  const addComment = useMemo((data) => {
+  const addComment = useCallback((data) => {
     dispatch(addCommentAction(data));
   }, [dispatch]);
 
@@ -123,7 +122,8 @@ function Article() {
                 <Post article={article} />
                 <Comment
                   comments={comments}
-                  articleId={id} />
+                  articleId={id}
+                  addComment={addComment} />
               </DivPaper>
             </Grid>
             <Hidden smDown>

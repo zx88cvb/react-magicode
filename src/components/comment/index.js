@@ -8,13 +8,16 @@ import {
   UlCommentList
 } from './style';
 
+import PropTypes from 'prop-types';
+
 import Respond from './respond/index'
 import TreeItem from './treeitem'
 
 function Comment(props) {
   const {
     comments,
-    articleId
+    articleId,
+    addComment
   } = props;
 
   // 分页 当前页
@@ -23,7 +26,12 @@ function Comment(props) {
 
   // 是否显示回复
   const replay = (id) => {
-    return replayKey === id ? (<Respond articleId={articleId} pId={id} />): null;
+    return replayKey === id ? (
+      <Respond
+        articleId={articleId}
+        pId={id}
+        addComment={addComment} />
+    ): null;
   };
 
   // 留言子组件
@@ -103,7 +111,9 @@ function Comment(props) {
       </DivTitle>
       <div className="card">
         <div className="card-body">
-        <Respond articleId={articleId} />
+        <Respond
+          articleId={articleId}
+          addComment={addComment} />
           {
             commentList(comments.records)
           }
@@ -112,5 +122,12 @@ function Comment(props) {
     </div>
   );
 }
+
+// propTypes 传入参数校验
+Comment.propTypes = {
+  articleId: PropTypes.string,
+  comments: PropTypes.object,
+  addComment: PropTypes.func
+};
 
 export default React.memo(Comment);

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import {
   UlChildren
 } from './style';
@@ -67,5 +69,13 @@ function TreeItem(props) {
     </UlChildren>
   );
 }
+
+// propTypes 传入参数校验
+TreeItem.propTypes = {
+  parent: PropTypes.object,
+  item: PropTypes.object,
+  replay: PropTypes.elementType,
+  handleReplayClick: PropTypes.func
+};
 
 export default React.memo(TreeItem);
