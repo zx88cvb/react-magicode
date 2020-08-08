@@ -13,6 +13,23 @@ import PropTypes from 'prop-types';
 import Respond from './respond/index'
 import TreeItem from './treeitem'
 
+import Pagination from '@material-ui/lab/Pagination';
+import { makeStyles } from '@material-ui/core/styles';
+
+// material-ui
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      marginTop: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary
+    },
+  },
+  button: {
+    backgroundColor: '#ff0000'
+  }
+}));
+
 function Comment(props) {
   const {
     comments,
@@ -23,6 +40,7 @@ function Comment(props) {
   // 分页 当前页
   const [replayKey, setReplayKey] = useState(0);
 
+  const classes = useStyles();
 
   // 是否显示回复
   const replay = (id) => {
@@ -117,6 +135,11 @@ function Comment(props) {
           {
             commentList(comments.records)
           }
+          <div className={classes.root}>
+            <Pagination
+              count={comments.pages}
+              color="primary" />
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import {put, select, takeEvery} from 'redux-saga/effects'
+import {put, select, takeEvery, take} from 'redux-saga/effects'
 import * as constants from './constants';
 
 import { 
@@ -75,6 +75,8 @@ function* addComment() {
 
     if (ERR_OK === res.code) {
       yield put(addCommentSaga(res.message));
+      // 刷新留言列表
+      yield take(getComments());
     } else {
       yield put(res.message)
     }

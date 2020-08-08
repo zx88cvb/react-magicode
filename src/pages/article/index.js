@@ -11,6 +11,8 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
+// import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 import Sidebar from 'components/sidebar';
 import Post from 'components/post';
 import Comment from 'components/comment';
@@ -103,6 +105,7 @@ function Article() {
   
   return (
     <Main>
+      <Alert severity="success">This is a success message!</Alert>
       <div className="container">
         <DivBreadcrumbs>
           <span>
