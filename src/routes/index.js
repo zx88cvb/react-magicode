@@ -13,6 +13,7 @@ const SuspenseComponent = Component => props => {
 // 组件
 const ArticleComponent = lazy(() => import("pages/article/index"));
 const CategoryComponent = lazy(() => import("pages/category/index"));
+const LoginComponent = lazy(() => import("pages/login/index"));
 
 export default [
   {
@@ -29,6 +30,11 @@ export default [
           //   render: () => <Redirect to={"/recommend"} />
           // }
         ]
+      },
+      {
+        path: "/login",
+        component: SuspenseComponent(LoginComponent),
+        exact: true
       },
       {
         path: "/category/:cid",
