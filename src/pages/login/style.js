@@ -3,7 +3,8 @@ import Button from '@material-ui/core/Button';
 import style,
 {
   MainElement,
-  PaperBase
+  PaperBase,
+  AElement
 } from '../../assets/style/global-style';
 
 export const DivPaper = PaperBase;
@@ -14,11 +15,6 @@ export const ButtonSign = styled(Button)`
   padding: .3125rem .75rem .25rem .75rem;
 
   background-color: ${style["theme-color-primary"]};
-
-  :hover {
-    color: ${style["font-color-light-hover"]};
-  }
-  
 `;
 
 export const DivLogin = styled.div`
@@ -74,7 +70,32 @@ export const Main = styled(MainElement)`
 
     .sign-form {
       .text-muted{
+        margin-top: 1rem;
+        @media (min-width: 768px) {
+          margin-top: 1.5rem;
+        }
         font-size: 0.75rem;
+
+        span {
+          font-size: 0.75rem;
+          ${AElement} {
+            fill: rebeccapurple;
+          }
+        }
+
+        .text-primary {
+          margin: 0 .5rem;
+          color: ${style["theme-color-primary"]};
+        }
+      }
+      .mt-3 {
+        margin-top: 1rem;
+        @media (min-width: 768px) {
+          margin-top: 1.5rem;
+        }
+        button {
+          width: 100%;
+        }
       }
     }
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import {
   DivLogin,
@@ -9,7 +10,18 @@ import {
   ButtonSign
 } from './style';
 
+// material-ui
+const useStyles = makeStyles(theme => ({
+  inputText: {
+    '& .MuiTextField-root': {
+      width: '100%'
+    }
+  }
+}));
+
 function Login(props) {
+
+  const classes = useStyles();
 
   // 表单验证
   const { register, handleSubmit, reset, errors } = useForm();
@@ -38,14 +50,15 @@ function Login(props) {
                 </div>
                 <div className="sign-form">
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <TextField
+                    <div className={classes.inputText}>
+                      <TextField
                         label="用户名/邮箱"
                         id="standard-basic"
                         name="username"
                         // required
                         helperText={errors?.username? errors.username.message: ''}
                         margin="dense"
-                        variant="outlined"
+                        variant="standard"
                         // value={respondForm.username}
                         inputRef={register({
                           required: '用户名或邮箱不能为空',
@@ -64,24 +77,42 @@ function Login(props) {
                         // required
                         helperText={errors?.password? errors.password.message: ''}
                         margin="dense"
-                        variant="outlined"
+                        variant="standard"
                         // value={respondForm.username}
                         inputRef={register({
                           required: '密码不能为空'
                         })}
                         error={errors?.password? true: false}
                       />
-                      <div className="">
-                        <ButtonSign type="submit">登录</ButtonSign>
-                        <ButtonSign type="button">社交帐号登录</ButtonSign>
+                    </div>
+                      <div className="mt-3">
+                        <div className="row row-sm">
+                          <div className="col">
+                            <ButtonSign
+                              variant="contained"
+                              color="primary"
+                              type="submit">
+                                登录
+                            </ButtonSign>
+                          </div>
+                          <div className="col">
+                            <ButtonSign
+                              variant="contained"
+                              color="secondary"
+                              type="button">
+                                社交帐号登录
+                            </ButtonSign>
+                          </div>
+                        </div>
                       </div>
                       <div className="text-muted">
                         <span>
                           没有账号?
-                          <a href="#">立即注册</a>
+                          <a href="/#"> 立即注册</a>
                         </span>
+                        <i class="text-primary mx-1">/</i>
                         <span>
-                          <a href="#">找回密码</a>
+                          <a href="/#">找回密码</a>
                         </span>
                       </div>
                   </form>

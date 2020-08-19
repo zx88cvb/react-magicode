@@ -111,6 +111,27 @@ export const CommonStyle = createGlobalStyle`
       margin-left: -0.625rem;
     }
   }
+
+  .row-sm {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+
+    .col {
+      padding: 0 1rem;
+    }
+  }
+
+  .col {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
   
 
   .order-1 {
