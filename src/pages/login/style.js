@@ -9,6 +9,8 @@ import style,
 
 export const DivPaper = PaperBase;
 
+export {AElement};
+
 export const ButtonSign = styled(Button)`
   position: relative;
   font-size: .75rem;
@@ -78,8 +80,13 @@ export const Main = styled(MainElement)`
 
         span {
           font-size: 0.75rem;
+          color: #5e646d;
           ${AElement} {
-            fill: rebeccapurple;
+            color: ${style["font-color-light"]};
+
+            :hover {
+              color: ${style["font-color-light-hover"]};
+            }
           }
         }
 

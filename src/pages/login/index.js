@@ -2,13 +2,13 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import {
   DivLogin,
   Main,
-  DivPaper,
-  ButtonSign
+  DivPaper
 } from './style';
+
+import LoginForm from './login-form'
 
 // material-ui
 const useStyles = makeStyles(theme => ({
@@ -23,28 +23,20 @@ function Login(props) {
 
   const classes = useStyles();
 
-  // 表单验证
-  const { register, handleSubmit, reset, errors } = useForm();
-
-  // 提交表单
-  const onSubmit = data => {
-    console.log(data)
-    reset();
-  };
-
   return (
     <DivLogin className="flex-fill">
       <Main className="flex-fill">
         <Grid container>
           <Grid item md={6} lg={7}>
             <DivPaper elevation={0}>
-              <div className="sign-cover p-4">
+              <div className="sign-cover">
               </div>
             </DivPaper>
           </Grid>
           <Grid item md={6} lg={5}>
             <DivPaper elevation={0}>
-              <div className="sign-body flex-fill p-4">
+              <LoginForm classes={classes} />
+              {/* <div className="sign-body flex-fill p-4">
                 <div className="sign-header">
                   欢迎回来
                 </div>
@@ -108,16 +100,16 @@ function Login(props) {
                       <div className="text-muted">
                         <span>
                           没有账号?
-                          <a href="/#"> 立即注册</a>
+                          <AElement> 立即注册</AElement>
                         </span>
                         <i class="text-primary mx-1">/</i>
                         <span>
-                          <a href="/#">找回密码</a>
+                          <AElement>找回密码</AElement>
                         </span>
                       </div>
                   </form>
                 </div>
-              </div>
+              </div> */}
             </DivPaper>
           </Grid>
         </Grid>
