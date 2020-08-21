@@ -7,7 +7,9 @@ import style,
   AElement
 } from '../../assets/style/global-style';
 
-export const DivPaper = PaperBase;
+export const DivPaper = styled(PaperBase)`
+  height: 100%;
+`;
 
 export {AElement};
 

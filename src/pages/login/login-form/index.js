@@ -33,7 +33,7 @@ function LoginForm(props) {
               id="standard-basic"
               name="username"
               // required
-              helperText={errors?.username? errors.username.message: ''}
+              helperText={errors?.username? errors.username.message: ' '}
               margin="dense"
               variant="standard"
               // value={respondForm.username}
@@ -52,7 +52,7 @@ function LoginForm(props) {
               type="password"
               name="password"
               // required
-              helperText={errors?.password? errors.password.message: ''}
+              helperText={errors?.password? errors.password.message: 'hello'}
               margin="dense"
               variant="standard"
               // value={respondForm.username}
