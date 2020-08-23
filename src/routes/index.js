@@ -14,6 +14,8 @@ const SuspenseComponent = Component => props => {
 const ArticleComponent = lazy(() => import("pages/article/index"));
 const CategoryComponent = lazy(() => import("pages/category/index"));
 const LoginComponent = lazy(() => import("pages/login/index"));
+const LoginFormComponent = lazy(() => import("pages/login/login-form/index"));
+const RegisterFormComponent = lazy(() => import("pages/login/register/index"));
 
 export default [
   {
@@ -34,7 +36,19 @@ export default [
       {
         path: "/login",
         component: SuspenseComponent(LoginComponent),
-        exact: true
+        // exact: true,
+        routers: [
+          {
+            path: "/login/login-form",
+            exact: true,
+            component: SuspenseComponent(LoginFormComponent)
+          },
+          {
+            path: "/login/register",
+            exact: true,
+            component: SuspenseComponent(RegisterFormComponent)
+          }
+        ]
       },
       {
         path: "/category/:cid",

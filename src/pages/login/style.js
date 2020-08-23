@@ -3,15 +3,12 @@ import Button from '@material-ui/core/Button';
 import style,
 {
   MainElement,
-  PaperBase,
-  AElement
+  PaperBase
 } from '../../assets/style/global-style';
 
 export const DivPaper = styled(PaperBase)`
   height: 100%;
 `;
-
-export {AElement};
 
 export const ButtonSign = styled(Button)`
   position: relative;
@@ -83,9 +80,10 @@ export const Main = styled(MainElement)`
         span {
           font-size: 0.75rem;
           color: #5e646d;
-          ${AElement} {
+          a {
             color: ${style["font-color-light"]};
-
+            text-decoration: none;
+            cursor: pointer;
             :hover {
               color: ${style["font-color-light-hover"]};
             }

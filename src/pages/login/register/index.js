@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function LoginForm(props) {
+function RegisterForm(props) {
 
   // const { classes } = props;
   const classes = useStyles();
@@ -33,43 +33,28 @@ function LoginForm(props) {
   return (
     <div className="sign-body flex-fill p-4">
       <div className="sign-header">
-        欢迎回来
+        加入我们
       </div>
       <div className="sign-form">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.inputText}>
             <TextField
-              label="用户名/邮箱"
+              label="邮箱"
               id="standard-basic"
-              name="username"
+              name="email"
               // required
-              helperText={errors?.username? errors.username.message: ' '}
+              helperText={errors?.email? errors.email.message: ' '}
               margin="dense"
               variant="standard"
               // value={respondForm.username}
               inputRef={register({
-                required: '用户名或邮箱不能为空',
+                required: '邮箱不能为空',
                 maxLength: {
                   value: 50,
-                  message: '用户名或邮箱长度最大不能超过50字数'
+                  message: '邮箱长度最大不能超过50字数'
                 } 
               })}
-              error={errors?.username? true: false}
-            />
-            <TextField
-              id="standard-basic"
-              label="密码"
-              type="password"
-              name="password"
-              // required
-              helperText={errors?.password? errors.password.message: ' '}
-              margin="dense"
-              variant="standard"
-              // value={respondForm.username}
-              inputRef={register({
-                required: '密码不能为空'
-              })}
-              error={errors?.password? true: false}
+              error={errors?.email? true: false}
             />
           </div>
             <div className="mt-3">
@@ -78,30 +63,18 @@ function LoginForm(props) {
                   <ButtonSign
                     variant="contained"
                     color="primary"
-                    type="submit">
-                      登录
-                  </ButtonSign>
-                </div>
-                <div className="col">
-                  <ButtonSign
-                    variant="contained"
-                    color="secondary"
                     type="button">
-                      社交帐号登录
+                      下一步
                   </ButtonSign>
                 </div>
               </div>
             </div>
             <div className="text-muted">
               <span>
-                没有账号?
-                <Link to="/login/register"
-                  alt="立即注册"> 立即注册
+                已有账号?
+                <Link to="/login/login-form"
+                  alt="立即登录"> 立即登录
                 </Link>
-              </span>
-              <i className="text-primary mx-1">/</i>
-              <span>
-                <Link>找回密码</Link>
               </span>
             </div>
         </form>
@@ -110,4 +83,4 @@ function LoginForm(props) {
   );
 }
 
-export default React.memo(LoginForm);
+export default React.memo(RegisterForm);

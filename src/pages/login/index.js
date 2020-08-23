@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { renderRoutes } from "react-router-config";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -8,7 +9,7 @@ import {
   DivPaper
 } from './style';
 
-import LoginForm from './login-form'
+// import LoginForm from './login-form'
 
 // material-ui
 const useStyles = makeStyles(theme => ({
@@ -20,7 +21,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Login(props) {
-
+  const { route } = props;
+  console.log(route);
   const classes = useStyles();
 
   return (
@@ -35,7 +37,8 @@ function Login(props) {
           </Grid>
           <Grid item md={6} lg={5}>
             <DivPaper elevation={0}>
-              <LoginForm classes={classes} />
+              {/* <LoginForm classes={classes} /> */}
+              {renderRoutes(route.routers)}
               {/* <div className="sign-body flex-fill p-4">
                 <div className="sign-header">
                   欢迎回来
