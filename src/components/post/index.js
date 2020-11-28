@@ -23,6 +23,11 @@ function Post(props) {
     ): null;
   };
 
+  // 点击喜欢
+  const likeHandleClick = (articleId) => {
+    console.log(articleId);
+  }
+
   return (
     <div className="card">
       <div className="card-body">
@@ -61,18 +66,50 @@ function Post(props) {
 
         {/* 文章内容 */}
         <DivPostContent>
-          <div className="nc-light-gallery" dangerouslySetInnerHTML={{__html: article.content}}>
-          </div>
+          <div className="nc-light-gallery" dangerouslySetInnerHTML={{__html: article.content}} />
         </DivPostContent>
       </div>
       <DivFooter className="card-footer">
         <div className="post-share-section py-2">
-          <span className="mr">
+          <span className="mr" onClick={() => likeHandleClick(article.id)}>
             <svg className="icon" aria-hidden="true">
-              <use xlinkHref="#icon-like"></use>
+              <use xlinkHref="#icon-like1"></use>
             </svg>
             <small>12</small>
           </span>
+          <div className="flex-fill"></div>
+          <div className="post-share-action">
+            <div className="post-share-action">
+              <button className="btn btn-icon btn-rounded share">
+                <span>
+                  <svg className="icon" aria-hidden="true">
+                    <use xlinkHref="#icon-share"></use>
+                  </svg>
+                </span>
+              </button>
+              <a href="/" className="btn btn-icon btn-rounded" target="_blank">
+                <span>
+                  <svg className="icon" aria-hidden="true">
+                    <use xlinkHref="#icon-weibo"></use>
+                  </svg>
+                </span>
+              </a>
+              <a href="/" className="btn btn-icon btn-rounded" target="_blank">
+                <span>
+                  <svg className="icon" aria-hidden="true">
+                    <use xlinkHref="#icon-wechat"></use>
+                  </svg>
+                </span>
+              </a>
+              <a href="/" className="btn btn-icon btn-rounded" target="_blank">
+                <span>
+                  <svg className="icon" aria-hidden="true">
+                    <use xlinkHref="#icon-QQ"></use>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
       </DivFooter>
     </div>

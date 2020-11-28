@@ -220,6 +220,16 @@ export const CommonStyle = createGlobalStyle`
     transition: opacity 0.3s ease-in-out;
   }
 
+  .btn-icon {
+    text-align: center;
+    width: 2.125rem;
+    height: 2.125rem;
+    padding: 0;
+    position: relative;
+    font-size: 1.125rem;
+    text-decoration: none;
+  }
+
 `
 
 export const MainElement = styled.main`

@@ -138,5 +138,41 @@ export const DivFooter = styled.div`
       }
         
     }
+
+    .post-share-action {
+      margin-top: 1.5rem;
+      @media (min-width: 992px) {
+        margin-top: 0;
+      }
+      .btn {
+        display: inline-block;
+        margin: 0 .25rem;
+        font-weight: 400;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        line-height: 1.5;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        background-color: #f2f2f5;
+        border-color: #f2f2f5;
+        :hover {
+          color: ${style["font-color-light-hover"]};
+        }
+      }
+
+      .btn-rounded {
+        border-radius: 4rem;
+      }
+
+      span {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 `;
